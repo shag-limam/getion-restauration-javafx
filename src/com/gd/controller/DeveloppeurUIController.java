@@ -101,12 +101,12 @@ public class DeveloppeurUIController {
 	@FXML
 	private void initialize() {
 		// Initialise la table des commandes
-        idCommandeColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<Integer>(cellData.getValue().getId()));
-        produitCommandeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduit().getIntitule()));
-        quantiteColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getQuantite()));
-        dateCommandeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateCommande().toString()));
-        montantTotalColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getMontantTotal()));
-        etatPaiementColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isPayee() ? "Payée" : "Non payée"));
+//        idCommandeColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<Integer>(cellData.getValue().getId()));
+//        produitCommandeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduit().getIntitule()));
+//        quantiteColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getQuantite()));
+//        dateCommandeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateCommande().toString()));
+//        montantTotalColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getMontantTotal()));
+//        etatPaiementColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isPayee() ? "Payée" : "Non payée"));
 		// Initialise la table des utilisateurs
 
 		// Initialise la table des Produit

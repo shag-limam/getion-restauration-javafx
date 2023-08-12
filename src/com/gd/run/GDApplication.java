@@ -128,7 +128,7 @@ public class GDApplication extends Application {
 			try {
 				// Load root layout from fxml file.
 				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(GDApplication.class.getResource("../ui/DeveloppeurUI.fxml"));
+				loader.setLocation(GDApplication.class.getResource("../ui/RestaurateurUI.fxml"));
 				BorderPane page = (BorderPane) loader.load();
 
 				// Show the scene containing the root layout.
