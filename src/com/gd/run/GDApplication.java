@@ -258,7 +258,7 @@ public class GDApplication extends Application {
 	public boolean showIncidentEditUI(Produit produit) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(GDApplication.class.getResource("../ui/CreerIncidentUI.fxml"));
+			loader.setLocation(GDApplication.class.getResource("../ui/CreerProduitUI.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			// Create the dialog Stage.
 			Stage dialogStage = new Stage();

@@ -101,25 +101,27 @@ public class DeveloppeurUIController {
 	@FXML
 	private void initialize() {
 		// Initialise la table des commandes
-//        idCommandeColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<Integer>(cellData.getValue().getId()));
-//        produitCommandeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduit().getIntitule()));
-//        quantiteColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getQuantite()));
-//        dateCommandeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateCommande().toString()));
-//        montantTotalColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getMontantTotal()));
-//        etatPaiementColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isPayee() ? "Payée" : "Non payée"));
-		// Initialise la table des utilisateurs
-
+        idCommandeColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<Integer>(cellData.getValue().getId()));
+        produitCommandeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduit().getIntitule()));
+        quantiteColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getQuantite()));
+        dateCommandeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateCommande().toString()));
+        montantTotalColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getMontantTotal()));
+        etatPaiementColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isPayee() ? "Payée" : "Non payée"));
+		
+        commandeTable.setItems(GDApplication.getInstance().getDataSource().getCommandes());
+        // Initialise la table des utilisateurs
+   
 		// Initialise la table des Produit
-		IdColumn.setCellValueFactory(cellData -> new  SimpleObjectProperty<Integer>(cellData.getValue().getId()));
-		//DateColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<Date>(cellData.getValue().getDate()));
-		DescriptionColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescription()));
-		mise_ajourColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getOpendate()));
-		EtatProduiColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEtat()));
-		AppColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIntitule()));
-        PrixColumn.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getPrix()).asObject());
-       // ImageColumn.setCellValueFactory(cellData -> cellData.getValue().imageProperty());
-
-		ProduitTable.setItems(GDApplication.getInstance().getDataSource().getproduits());
+//		IdColumn.setCellValueFactory(cellData -> new  SimpleObjectProperty<Integer>(cellData.getValue().getId()));
+//		//DateColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<Date>(cellData.getValue().getDate()));
+//		DescriptionColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescription()));
+//		mise_ajourColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getOpendate()));
+//		EtatProduiColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEtat()));
+//		AppColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIntitule()));
+//        PrixColumn.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getPrix()).asObject());
+//       // ImageColumn.setCellValueFactory(cellData -> cellData.getValue().imageProperty());
+//
+//		ProduitTable.setItems(GDApplication.getInstance().getDataSource().getproduits());
 		
 
 		//displayNoteMsDetails(null);
