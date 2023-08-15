@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -15,6 +18,10 @@ import com.gd.model.Produit;
 
 
 public class ProduitDaoImpl implements IDaoImpl<Produit> {
+	
+	
+	
+
 
 	@Override
 	public void create(Produit obj) throws UMSDBException {
@@ -126,5 +133,34 @@ public class ProduitDaoImpl implements IDaoImpl<Produit> {
 
 		return produits;
 	}
+	
+	
+	@Override
+    public List<String> listProductNames() throws UMSDBException {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<String> criteriaQuery = builder.createQuery(String.class);
+            Root<Produit> root = criteriaQuery.from(Produit.class);
+            criteriaQuery.select(root.get("intitule"));
+            return session.createQuery(criteriaQuery).list();
+        } catch (Exception e) {
+            throw new UMSDBException("Error while retrieving product names: " + e.getMessage(), e);
+        }
+    }
+
+
+	//@Override
+	public Produit getProduitByName(String nomProduit) throws UMSDBException {
+	    try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+	        CriteriaBuilder builder = session.getCriteriaBuilder();
+	        CriteriaQuery<Produit> criteriaQuery = builder.createQuery(Produit.class);
+	        Root<Produit> root = criteriaQuery.from(Produit.class);
+	        criteriaQuery.select(root).where(builder.equal(root.get("intitule"), nomProduit));
+	        return session.createQuery(criteriaQuery).uniqueResult();
+	    } catch (Exception e) {
+	        throw new UMSDBException("Error while retrieving product by name: " + e.getMessage(), e);
+	    }
+	}
+
 
 }

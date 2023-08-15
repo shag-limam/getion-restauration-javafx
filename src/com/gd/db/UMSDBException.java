@@ -7,4 +7,9 @@ public class UMSDBException extends SQLException {
 	public UMSDBException(String message) {
 		super(message);
 	}
+	
+	
+	public UMSDBException(String message, Exception cause) {
+        super(message, cause);
+    }
 }

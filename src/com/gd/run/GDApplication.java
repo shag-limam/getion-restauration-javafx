@@ -8,6 +8,7 @@ import com.gd.db.UMSDBException;
 import com.gd.model.Developpeur;
 import com.gd.model.Produit;
 import com.gd.model.Chef;
+import com.gd.model.Commande;
 import com.gd.model.Utilisateur;
 import com.gd.run.GDApplication;
 import com.gd.service.DataSource;
@@ -18,6 +19,8 @@ import com.gd.controller.AjouterUserUIController;
 import com.gd.controller.CreerProduitController;
 import com.gd.controller.DeveloppeurUIController;
 import com.gd.controller.ChefUIController;
+import com.gd.controller.CreerCommandController;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -46,7 +49,7 @@ public class GDApplication extends Application {
 	public void start(Stage primaryStage) {
 		instance = this;
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("Gestion des Incidents");
+		this.primaryStage.setTitle("Gestion des Res");
 		try {
 			dataSource = new DataSource();
 			
@@ -85,7 +88,6 @@ public class GDApplication extends Application {
 				Scene scene = new Scene(page);
 				primaryStage = new Stage();
 				
-
 				primaryStage.setScene(scene);
 				
 				primaryStage.show();
@@ -105,7 +107,6 @@ public class GDApplication extends Application {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(GDApplication.class.getResource("../ui/AdministrateurUI.fxml"));
 			BorderPane page = (BorderPane) loader.load();
-
 			// Show the scene containing the root layout.
 			Scene scene = new Scene(page);
 			AdminStage = new Stage();
@@ -122,15 +123,15 @@ public class GDApplication extends Application {
 
 	}
 	
-	// Interface Developeur
+	// Interface Developeur 
     public void initDevelopeurLayout(Developpeur user) {
 			// TODO Auto-generated method stub
 			try {
+				
 				// Load root layout from fxml file.
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(GDApplication.class.getResource("../ui/RestaurateurUI.fxml"));
 				BorderPane page = (BorderPane) loader.load();
-
 				// Show the scene containing the root layout.
 				Scene scene = new Scene(page);
 				DevStage = new Stage();
@@ -253,6 +254,35 @@ public class GDApplication extends Application {
 			return false;
 		}
 	}
+	
+	// show Produit Edit Ui
+	public boolean showCommandeEditUI(Commande commande) {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(GDApplication.class.getResource("../ui/CreerCommandeUI.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			// Create the dialog Stage.
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Ajouter un Commande");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(RapporteurStage);
+			dialogStage.setResizable(false);
+
+			dialogStage.setScene(new Scene(page));
+
+			CreerCommandController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			controller.setCommande(commande); // Set the user into the controller.
+			// Show the dialog and wait until the user closes it
+			dialogStage.showAndWait();
+
+			return controller.isValiderClicked();
+		} catch (IOException e) {
+			System.err.println(e.getMessage());
+			return false;
+		}
+	}
+	
 
 	// show Produit Edit Ui
 	public boolean showIncidentEditUI(Produit produit) {

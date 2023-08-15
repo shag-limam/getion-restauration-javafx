@@ -5,7 +5,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -47,60 +46,61 @@
         <rowConstraints>
           <RowConstraints maxHeight="123.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="123.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="182.0" minHeight="10.0" prefHeight="111.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="97.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="182.0" minHeight="10.0" prefHeight="76.33334350585938" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="182.0" minHeight="10.0" prefHeight="60.666656494140625" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="97.0" minHeight="10.0" prefHeight="57.333343505859375" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Nom Client :">
-               <GridPane.margin>
-                  <Insets left="30.0" />
-               </GridPane.margin>
-               <opaqueInsets>
-                  <Insets left="50.0" />
-               </opaqueInsets>
-            </Label>
+            
             <Label text="Montant Total :" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="30.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="ClientField" prefHeight="36.0" prefWidth="322.0" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets right="20.0" />
-               </GridPane.margin>
-            </TextField>
+
             <TextField fx:id="MontantTotalField" prefHeight="36.0" prefWidth="322.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextArea fx:id="DescField" prefHeight="130.0" prefWidth="357.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            
+                        <Label text="Quantite :" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+
+            <TextField fx:id="QuantiteField" prefHeight="36.0" prefWidth="322.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
-            </TextArea>
-            <Label text="Nom produit :" GridPane.rowIndex="2">
+            </TextField>
+
+            <Label text="Etat :" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="30.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Etat :" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets left="30.0" />
-               </GridPane.margin>
-            </Label>
-            <ComboBox fx:id="EtatComboBox" prefHeight="36.0" prefWidth="386.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 2; -fx-border-color: #E5E5E5;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <ComboBox fx:id="NiveauComboBox" prefHeight="36.0" prefWidth="386.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 2; -fx-border-color: #E5E5E5;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </ComboBox>
-            <Label text="Date Commande :" GridPane.rowIndex="3">
+            <Label text="Date Commande :" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="30.0" />
                </GridPane.margin>
             </Label>
-            <DatePicker fx:id="Date" editable="false" prefHeight="34.0" prefWidth="379.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <DatePicker fx:id="Date" editable="false" prefHeight="34.0" prefWidth="379.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            
+            
+            <Label text="Produir commander :" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <ComboBox fx:id="produitCommandeComboBox" prefHeight="36.0" prefWidth="375.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 2; -fx-border-color: #E5E5E5;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
       <ImageView fitHeight="36.0" fitWidth="29.0" layoutX="30.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">

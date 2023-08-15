@@ -123,6 +123,16 @@
                            <padding>
                               <Insets bottom="10.0" left="7.0" right="7.0" top="10.0" />
                            </padding>
+                           <children>
+                                 <Button mnemonicParsing="false" onAction="#handleNouveaucommande" style="-fx-background-color: #CCDBFD;" text="Creer  ">
+                                 <graphic>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@resources/bug.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>                           </children>
                         </HBox>
                         <TableView fx:id="commandeTable" style="-fx-selection-bar: #CCDBFD; -fx-selection-bar: salmon; fx-border-color: #ABC4FF; -fx-border-width: 1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="51.0">
                            <columnResizePolicy>
@@ -130,7 +140,6 @@
                            </columnResizePolicy>
                            <columns>
                               <TableColumn fx:id="idCommandeColumn" minWidth="-Infinity" prefWidth="105.0" text="#" />
-                              <TableColumn fx:id="produitCommandeColumn" prefWidth="109.0" text="produit commande" />
                               <TableColumn fx:id="quantiteColumn" prefWidth="132.0" text="quntite" />
                               <TableColumn fx:id="dateCommandeColumn" prefWidth="132.0" text="date" />
                               <TableColumn fx:id="montantTotalColumn" prefWidth="109.0" text="prix" />

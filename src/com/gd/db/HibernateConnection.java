@@ -15,7 +15,6 @@ public class HibernateConnection {
 	private HibernateConnection() {
 		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
 		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
-		
         // Creating Hibernate Session Factory Instance
 		factory = meta.getSessionFactoryBuilder().build();
 		

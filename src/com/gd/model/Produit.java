@@ -36,7 +36,6 @@ public class Produit  implements Serializable {
 	@Column(name = "opendate")
 	private String opendate;
 	
-
 	
 	@Column(name = "intitule")
 	private String intitule;

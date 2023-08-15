@@ -1,11 +1,14 @@
 package com.gd.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
@@ -17,6 +20,14 @@ public class Commande {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @ManyToOne 
+	private Chef cef;
+	@OneToMany(
+	        cascade = CascadeType.ALL,
+	        orphanRemoval = true
+	    )
+	@JoinColumn(name = "commande_id")
+	
     @ManyToOne
     private Developpeur developpeur;
 
@@ -24,16 +35,17 @@ public class Commande {
     private Produit produit;
     
     @Column(name = "dateCommande")
-	private LocalDate dateCommande;
+	private String dateCommande;
     
     @Column(name = "quantite")
 	private int quantite;
-    
+    @Column(name = "produit")
+	private String produitC;
     @Column(name = "montantTotal")
-	private double montantTotal;
+	private Float montantTotal;
     
     @Column(name = "payee")
-	private boolean payee;
+	private String payee;
 
 	public int getId() {
 		return id;
@@ -58,12 +70,19 @@ public class Commande {
 	public void setProduit(Produit produit) {
 		this.produit = produit;
 	}
+	public String getProduitc() {
+		return produitC;
+	}
 
-	public LocalDate getDateCommande() {
+	public void setProduitc(String produitC) {
+		this.produitC = produitC;
+	}
+
+	public String getDateCommande() {
 		return dateCommande;
 	}
 
-	public void setDateCommande(LocalDate dateCommande) {
+	public void setDateCommande(String dateCommande) {
 		this.dateCommande = dateCommande;
 	}
 
@@ -75,19 +94,19 @@ public class Commande {
 		this.quantite = quantite;
 	}
 
-	public double getMontantTotal() {
+	public Float getMontantTotal() {
 		return montantTotal;
 	}
 
-	public void setMontantTotal(double montantTotal) {
+	public void setMontantTotal(float montantTotal) {
 		this.montantTotal = montantTotal;
 	}
 
-	public boolean isPayee() {
+	public String isPayee() {
 		return payee;
 	}
 
-	public void setPayee(boolean payee) {
+	public void setPayee(String payee) {
 		this.payee = payee;
 	}
     

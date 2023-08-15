@@ -39,8 +39,9 @@ public class DataSource {
 		daoCommandImpl = new CommandeDaoImpl();
 		listUsers();
 		listDev();
-		
 		listProduir();
+		listCommandes();
+		getProduitNames();
 		
 	}
 	///////////////////////////////////////////////// Date source user //////////////////////////////////////////////////
@@ -151,6 +152,14 @@ public class DataSource {
 
 
 
+   public List<String> getProduitNames() throws UMSDBException {
+	    return daoImpl.listProductNames();
+	}
+
+	public Produit getProduitByName(String nomProduit) throws UMSDBException {
+	    return daoImpl.getProduitByName(nomProduit);
+	}
+
 
 ///////////////////////////////////////////////// Date source commande //////////////////////////////////////////////////
 
@@ -187,10 +196,10 @@ public class DataSource {
 	    return commandes;
 	}
 	
-	public List<Commande> readCommandesByUserId(long userId) throws UMSDBException {
-	    List<Commande> commandes = daoCommandImpl.readBy(userId);
-	    return commandes;
-	}
+//	public List<Commande> readCommandesByUserId(long userId) throws UMSDBException {
+//	    List<Commande> commandes = daoCommandImpl.readBy(userId);
+//	    return commandes;
+//	}
 
 }
 
