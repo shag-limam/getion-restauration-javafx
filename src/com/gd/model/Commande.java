@@ -76,7 +76,7 @@ public class Commande {
 		return produitC;
 	}
 
-	public void setProduitc() {
+	public void setProduitc(String produitC) {
 		this.produitC = produitC;
 	}
 

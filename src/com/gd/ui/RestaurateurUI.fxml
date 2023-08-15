@@ -23,9 +23,9 @@
    <left>
       <SplitPane orientation="VERTICAL" prefWidth="250.0" BorderPane.alignment="CENTER">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" style="-fx-background-color: #2f2f2f;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <HBox spacing="10.0" style="-fx-background-color: #2f2f2f; -fx-border-color: #ABC4FF; -fx-border-style: solid inside; -fx-border-width: 1;" AnchorPane.bottomAnchor="292.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <HBox spacing="10.0" style="-fx-border-color: #37b6cd; -fx-background-color: #37b6cd; -fx-border-style: solid inside; -fx-border-width: 1;" AnchorPane.bottomAnchor="292.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <padding>
                         <Insets bottom="10.0" left="7.0" right="7.0" top="10.0" />
                      </padding>
@@ -59,19 +59,19 @@
    <top>
       <SplitPane prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #2f2f2f;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;">
                <children>
-                  <Label prefHeight="50.0" prefWidth="115.0" style="-fx-background-color: #2f2f2f;" text="project" textFill="WHITE" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                  <Label prefHeight="50.0" prefWidth="115.0" style="-fx-background-color: #FFFFFF;" text="project" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
                      <font>
                         <Font name="Book Antiqua" size="37.0" />
                      </font>
                   </Label>
-                  <Label layoutX="125.0" layoutY="12.0" prefWidth="95.0" style="-fx-background-color: #2f2f2f;" text="GDR" textFill="#eaeaea">
+                  <Label layoutX="125.0" layoutY="12.0" prefWidth="95.0" style="-fx-background-color: #FFFFFF;" text="GDR">
                      <font>
                         <Font name="Arial Bold Italic" size="40.0" />
                      </font>
                   </Label>
-                  <FlowPane alignment="CENTER_RIGHT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2f2f2f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="0.0">
+                  <FlowPane alignment="CENTER_RIGHT" hgap="10.0" layoutX="233.0" prefHeight="68.0" prefWidth="457.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <TextField fx:id="rechercherField" promptText="Recherche..." />
                         <MenuButton fx:id="MenuButtonField" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" stylesheets="@resources/Style.css" text="Mon espace">
@@ -119,12 +119,12 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <HBox spacing="10.0" style="-fx-background-color: #2f2f2f; -fx-border-color: #ABC4FF; -fx-border-width: 1; -fx-border-style: solid inside;" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <HBox spacing="10.0" style="-fx-background-color: #37b6cd; -fx-border-color: #FFFFFF; -fx-border-width: 0; -fx-border-style: solid inside;" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <padding>
                               <Insets bottom="10.0" left="7.0" right="7.0" top="10.0" />
                            </padding>
                            <children>
-                                 <Button mnemonicParsing="false" onAction="#handleNouveaucommande" style="-fx-background-color: #CCDBFD;" text="Creer  ">
+                                 <Button mnemonicParsing="false" onAction="#handleNouveaucommande" style="-fx-background-color: #37b6cd;" text="Creer  ">
                                  <graphic>
                                     <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -146,7 +146,7 @@
                               <TableColumn fx:id="montantTotalColumn" prefWidth="109.0" text="prix" />
                               <TableColumn fx:id="etatPaiementColumn" prefWidth="109.0" text="Etat paiement" />
                               
-                           </columns>
+                                 </columns>
                         </TableView>
                      </children>
                   </AnchorPane>
