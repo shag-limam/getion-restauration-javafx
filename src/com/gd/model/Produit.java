@@ -1,6 +1,8 @@
 package com.gd.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -35,6 +37,10 @@ public class Produit  implements Serializable {
 	
 	@Column(name = "opendate")
 	private String opendate;
+	
+	
+	@ManyToOne 
+	private Commande commande = null;
 	
 	
 	@Column(name = "intitule")

@@ -41,7 +41,7 @@ public class DataSource {
 		listDev();
 		listProduir();
 		listCommandes();
-		getProduitNames();
+		//getProduitNames();
 		
 	}
 	///////////////////////////////////////////////// Date source user //////////////////////////////////////////////////

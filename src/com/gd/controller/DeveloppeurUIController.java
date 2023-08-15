@@ -49,6 +49,8 @@ public class DeveloppeurUIController {
 	private TableColumn<Commande, Float> montantTotalColumn;
 	@FXML
 	private TableColumn<Commande, String> etatPaiementColumn;
+	@FXML
+	private TableColumn<Commande, String>ProduitColumn;
 
 	@FXML
 	private TableView<Produit> ProduitTable;
@@ -73,6 +75,8 @@ public class DeveloppeurUIController {
 	
 	@FXML
 	private TableColumn<Produit, String>EtatProduiColumn;
+	
+	
 
 	@FXML
 	private MenuButton MenuButtonField;
@@ -115,6 +119,8 @@ public class DeveloppeurUIController {
         dateCommandeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateCommande().toString()));
         etatPaiementColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isPayee() ));
         montantTotalColumn.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().getMontantTotal()).asObject());
+        //ProduitColumn.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().setProduitc()));
+        ProduitColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduitc()));
         
         commandeTable.setItems(GDApplication.getInstance().getDataSource().getCommandes());
 		

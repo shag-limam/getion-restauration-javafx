@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Commande")
@@ -20,19 +22,19 @@ public class Commande {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne 
-	private Chef cef;
-	@OneToMany(
-	        cascade = CascadeType.ALL,
-	        orphanRemoval = true
-	    )
-	@JoinColumn(name = "commande_id")
+
 	
     @ManyToOne
     private Developpeur developpeur;
 
+    @OneToMany(mappedBy = "commande")
+    private List<Produit> produits = new ArrayList<>(); 
+    
     @ManyToOne
     private Produit produit;
+    
+
+
     
     @Column(name = "dateCommande")
 	private String dateCommande;
@@ -74,7 +76,7 @@ public class Commande {
 		return produitC;
 	}
 
-	public void setProduitc(String produitC) {
+	public void setProduitc() {
 		this.produitC = produitC;
 	}
 

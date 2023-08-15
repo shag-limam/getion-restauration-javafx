@@ -3,11 +3,15 @@ package com.gd.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.activation.DataSource;
+
 import com.gd.db.UMSDBException;
 import com.gd.model.Commande;
 import com.gd.model.Produit;
 import com.gd.run.GDApplication;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -16,9 +20,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-
 public class CreerCommandController {
 
+	
 
 	private Commande commande;
 
@@ -28,7 +32,8 @@ public class CreerCommandController {
 	private ComboBox<String> NiveauComboBox;
 	@FXML
 	private ComboBox<String> produitCommandeComboBox;
-
+	
+	
 
 	@FXML
 	private TextField QuantiteField;
@@ -42,12 +47,24 @@ public class CreerCommandController {
 	@FXML
 	private void initialize() throws UMSDBException {
 	    NiveauComboBox.getItems().clear();
-	    NiveauComboBox.getItems().addAll("Payée","Non payée");
+	    NiveauComboBox.getItems().addAll("Payée", "Non payée");
 	    
-	    // Charger les noms des produits disponibles dans le ComboBox
-	    List<String> nomsProduits = GDApplication.getInstance().getDataSource().getProduitNames();
-	    produitCommandeComboBox.getItems().addAll(nomsProduits);
+	    loadProductNames(); // Corrected method call
 	}
+
+	private com.gd.service.DataSource dataSource;
+	@FXML
+    private void loadProductNames() throws UMSDBException {
+        // Create an instance of your custom DataSource class
+        dataSource = new com.gd.service.DataSource();
+
+        ObservableList<String> productNames = FXCollections.observableArrayList();
+        for (Produit produit : dataSource.getproduits()) {
+            productNames.add(produit.getIntitule());
+        }
+
+        produitCommandeComboBox.setItems(productNames);
+    }
 
 
 	public void setCommande(Commande commande) {
@@ -57,14 +74,7 @@ public class CreerCommandController {
 	    Date.getEditor().setText(commande.getDateCommande());
 	}
 
-//	public void setCommande(Commande commande) {
-//		this.commande = commande;
-//		//AppField.setText(commande.getIntitule());
-//		MontantTotalField.setText(String.valueOf(commande.getMontantTotal())); // Convert float to String
-//		//QuantiteField.setText(String.valueOf(commande.getQuantite()));
-//		QuantiteField.setText(Integer.toString(commande.getQuantite()));
-//		Date.getEditor().setText(commande.getDateCommande());
-//	}
+
 
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
@@ -81,12 +91,11 @@ public class CreerCommandController {
 	        commande.setMontantTotal(prixValue);
 	        commande.setQuantite(quantiteValue);
 	        commande.setPayee(NiveauComboBox.getSelectionModel().getSelectedItem());
+	        commande.setProduitc(produitCommandeComboBox.getSelectionModel().getSelectedItem());
 	        //commande.setDateCommande(Date.getEditor().getText().toString());
 	        commande.setDateCommande(Date.getEditor().getText().toString());
 	        
-	        String nomProduit = produitCommandeComboBox.getSelectionModel().getSelectedItem();
-	        Produit produit = GDApplication.getInstance().getDataSource().getProduitByName(nomProduit);
-	        commande.setProduit(produit);
+
 
 			validerClicked = true;
 			dialogStage.close();
