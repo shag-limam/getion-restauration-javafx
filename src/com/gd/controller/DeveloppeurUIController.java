@@ -81,6 +81,8 @@ public class DeveloppeurUIController {
 	
 	@FXML
 	private Button btnproduit;
+	@FXML
+	private Button btncommande;
 
 	@FXML
 	private TextField rechercherField;
@@ -227,6 +229,13 @@ public class DeveloppeurUIController {
 	}
 
 
+	@FXML
+    private void openCommandeUI(ActionEvent event) {
+		Developpeur repp = new Developpeur();
+		GDApplication.getInstance().initDevelopeurLayout(repp);
+      Stage currentStage = (Stage) btnproduit.getScene().getWindow();
+      currentStage.close();
+	}
 	
     @FXML
     private void openDeveloppeur2UI(ActionEvent event) {

@@ -22,36 +22,36 @@
 <BorderPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gd.controller.ChefUIController">
    <left>
       <SplitPane orientation="VERTICAL" prefWidth="250.0" BorderPane.alignment="CENTER">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <HBox spacing="10.0" style="-fx-background-color: #37b6cd; -fx-border-color: #ABC4FF; -fx-border-style: solid inside; -fx-border-width: 1;" AnchorPane.bottomAnchor="292.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <HBox spacing="10.0" style="-fx-border-color: #37b6cd; -fx-background-color: #37b6cd; -fx-border-style: solid inside; -fx-border-width: 1;" AnchorPane.bottomAnchor="292.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <padding>
                         <Insets bottom="10.0" left="7.0" right="7.0" top="10.0" />
                      </padding>
                      <children>
-                        <ImageView fitHeight="15.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@resources/comment.png" />
-                           </image>
-                        </ImageView>
-                        <Label text="Commentaire" textFill="#1b191a">
+                        <Label text="Tableau de bord" textFill="WHITE">
                            <font>
                               <Font name="Bauhaus 93" size="12.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
-                  <TableView fx:id="MsTable" prefHeight="200.0" prefWidth="200.0" stylesheets="@resources/Style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="37.0">
-                    <columns>
-                      <TableColumn fx:id="idMs" prefWidth="75.0" />
-                    </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-               </children></AnchorPane>
-        </items>
+                  <Button fx:id="btnproduit" layoutY="76.0" mnemonicParsing="false" onAction="#openDeveloppeur2UI" prefHeight="40.0" prefWidth="248.0" text="LIste de produit" textAlignment="CENTER" />
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/gamme-de-produits.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btncommande" layoutY="36.0" mnemonicParsing="false" onAction="#openCommandeUI" prefHeight="40.0" prefWidth="248.0" text="Liste de commandes" />
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/liste-de-courses.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </items>
       </SplitPane>
    </left>
    <top>

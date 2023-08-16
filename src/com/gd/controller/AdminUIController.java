@@ -163,7 +163,7 @@ public class AdminUIController {
 				admin.setNom(user.getNom());
 				admin.setPrenom(user.getPrenom());
 				admin.setEmail(user.getEmail());
-				admin.setLogin(user.getNom());
+				admin.setLogin(user.getLogin());
 				admin.setPassword(user.getPassword());
 				try {
 					GDApplication.getInstance().getDataSource().AddUser(admin);
@@ -178,7 +178,7 @@ public class AdminUIController {
 				dev.setNom(user.getNom());
 				dev.setPrenom(user.getPrenom());
 				dev.setEmail(user.getEmail());
-				dev.setLogin(user.getNom());
+				dev.setLogin(user.getLogin());
 				dev.setPassword(user.getPassword());
 				try {
 					GDApplication.getInstance().getDataSource().AddUser(dev);
@@ -195,7 +195,7 @@ public class AdminUIController {
 				rap.setNom(user.getNom());
 				rap.setPrenom(user.getPrenom());
 				rap.setEmail(user.getEmail());
-				rap.setLogin(user.getNom());
+				rap.setLogin(user.getLogin());
 				rap.setPassword(user.getPassword());
 				try {
 					GDApplication.getInstance().getDataSource().AddUser(rap);

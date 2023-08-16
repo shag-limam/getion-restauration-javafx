@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -27,8 +28,11 @@ public class Commande {
     @ManyToOne
     private Developpeur developpeur;
 
-    @OneToMany(mappedBy = "commande")
-    private List<Produit> produits = new ArrayList<>(); 
+//    @OneToMany(mappedBy = "commande")
+//    private List<Produit> produits = new ArrayList<>(); 
+    
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Produit> produits = new ArrayList<>();
     
     @ManyToOne
     private Produit produit;
