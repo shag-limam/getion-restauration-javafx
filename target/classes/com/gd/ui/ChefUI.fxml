@@ -25,7 +25,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0">
                <children>
-                  <HBox spacing="10.0" style="-fx-background-color: #CCDBFD; -fx-border-color: #ABC4FF; -fx-border-style: solid inside; -fx-border-width: 1;" AnchorPane.bottomAnchor="292.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <HBox spacing="10.0" style="-fx-background-color: #37b6cd; -fx-border-color: #ABC4FF; -fx-border-style: solid inside; -fx-border-width: 1;" AnchorPane.bottomAnchor="292.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <padding>
                         <Insets bottom="10.0" left="7.0" right="7.0" top="10.0" />
                      </padding>
@@ -113,13 +113,13 @@
    <center>
       <TabPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFC;" stylesheets="@resources/Style.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
-          <Tab style="-fx-background-color: #CCDBFD; -fx-border-color: #ABC4FF; -fx-border-width: 1; -fx-font-size: 12px; -fx-font-family: Arial; -fx-text-base-color: #3A0CA3;" text="          Bugs        ">
+          <Tab style="-fx-background-color: #FFFFFF; -fx-border-color: #ABC4FF; -fx-border-width: 1; -fx-font-size: 12px; -fx-font-family: Arial; -fx-text-base-color: #3A0CA3;">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <HBox spacing="10.0" style="-fx-background-color: #CCDBFD; -fx-border-color: #ABC4FF; -fx-border-width: 1; -fx-border-style: solid inside;" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <HBox spacing="10.0" style="-fx-background-color: #37b6cd; -fx-border-color: #ABC4FF; -fx-border-width: 1; -fx-border-style: solid inside;" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#handleNouveauIncident" style="-fx-background-color: #CCDBFD;" text="Creer  ">
+                              <Button mnemonicParsing="false" onAction="#handleNouveauIncident" style="-fx-background-color: #37b6cd;" text="Creer  ">
                                  <graphic>
                                     <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -128,7 +128,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#handleModifierIncident" style="-fx-background-color: #CCDBFD;" text="Modifier">
+                              <Button mnemonicParsing="false" onAction="#handleModifierIncident" style="-fx-background-color: #37b6cd;" text="Modifier">
                                  <graphic>
                                     <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -137,7 +137,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#handleSupprimerProduit" style="-fx-background-color: #CCDBFD;" text="Supprimer">
+                              <Button mnemonicParsing="false" onAction="#handleSupprimerProduit" style="-fx-background-color: #37b6cd;" text="Supprimer">
                                  <graphic>
                                     <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

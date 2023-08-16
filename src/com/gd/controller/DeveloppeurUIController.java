@@ -38,8 +38,6 @@ public class DeveloppeurUIController {
 	@FXML
 	private TableView<Commande> commandeTable;
 	@FXML
-	private TableColumn<Commande, Integer> idCommandeColumn;
-	@FXML
 	private TableColumn<Commande, String> produitCommandeColumn;
 	@FXML
 	private TableColumn<Commande, Integer> quantiteColumn;
@@ -110,25 +108,26 @@ public class DeveloppeurUIController {
 	
 	
 	@FXML
-	private void initialize(){
-//		// Initialise la table des commandes
-        idCommandeColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<Integer>(cellData.getValue().getId()));
-        //produitCommandeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduit().getIntitule()));
-        //quantiteColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getQuantite()));
-        quantiteColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantite()).asObject());
-        dateCommandeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateCommande().toString()));
-        etatPaiementColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isPayee() ));
-        montantTotalColumn.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().getMontantTotal()).asObject());
-        //ProduitColumn.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().setProduitc()));
-        ProduitColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduitc()));
-        
-        commandeTable.setItems(GDApplication.getInstance().getDataSource().getCommandes());
-		
-		addChangeListener();
+	private void initialize() {
+	    // Initialise the Commande table
+	    quantiteColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantite()).asObject());
+	    dateCommandeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateCommande().toString()));
+	    etatPaiementColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isPayee()));
+	    montantTotalColumn.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().getMontantTotal()).asObject());
+	    ProduitColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduitc()));
 
-		rechercher();
+	    // Assuming commandeTable is properly associated with the corresponding TableView in FXML
+	    commandeTable.setItems(GDApplication.getInstance().getDataSource().getCommandes());
 
+	    // Initialise the Produit table
+	    
+	    addChangeListener();
+
+	    rechercher();
 	}
+
+	
+
 	
 //	@FXML
 //	private void initialize() {
@@ -231,22 +230,27 @@ public class DeveloppeurUIController {
 	
     @FXML
     private void openDeveloppeur2UI(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../ui/DeveloppeurProduitUI.fxml"));
-            BorderPane page = (BorderPane) loader.load();
-            // Créer une nouvelle scène et afficher la nouvelle interface utilisateur
-            Scene scene = new Scene(page);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-
-            // Vous pouvez également fermer la scène actuelle si nécessaire
-            Stage currentStage = (Stage) btnproduit.getScene().getWindow();
-            currentStage.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    	Chef repp = new Chef();
+		GDApplication.getInstance().initRapporteurLayout1(repp);
+      Stage currentStage = (Stage) btnproduit.getScene().getWindow();
+      currentStage.close();
+//        try {
+//        	
+//            FXMLLoader loader = new FXMLLoader();
+//            loader.setLocation(getClass().getResource("../ui/DeveloppeurProduitUI.fxml"));
+//            BorderPane page = (BorderPane) loader.load();
+//            // Créer une nouvelle scène et afficher la nouvelle interface utilisateur
+//            Scene scene = new Scene(page);
+//            Stage stage = new Stage();
+//            stage.setScene(scene);
+//            stage.show();
+//
+//            // Vous pouvez également fermer la scène actuelle si nécessaire
+//            Stage currentStage = (Stage) btnproduit.getScene().getWindow();
+//            currentStage.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
     
     public int idCommande() {

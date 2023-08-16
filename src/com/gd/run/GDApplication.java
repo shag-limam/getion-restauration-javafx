@@ -198,7 +198,31 @@ public class GDApplication extends Application {
 		}
 
 	}
+ 
+	public void initRapporteurLayout1(Chef user) {
+		// TODO Auto-generated method stub
+		try {
 
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(GDApplication.class.getResource("../ui/DeveloppeurProduitUI.fxml"));
+			BorderPane page = (BorderPane) loader.load();
+
+			// Show the scene containing the root layout.
+			Scene scene = new Scene(page);
+			RapporteurStage = new Stage();
+			primaryStage.hide();
+
+			RapporteurStage.setScene(scene);
+			ChefUIController controller = loader.getController();
+			controller.setDialogStage(RapporteurStage);
+			controller.setUser(user);
+
+			RapporteurStage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 	// Interface changer Password
 	public void initChangePassword() {
 
