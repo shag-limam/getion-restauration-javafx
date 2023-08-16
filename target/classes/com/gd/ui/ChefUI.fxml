@@ -156,7 +156,6 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                            <columns>
-                              <TableColumn fx:id="IdColumn" minWidth="-Infinity" prefWidth="105.0" text="#" />
                               <TableColumn fx:id="AppColumn" prefWidth="109.0" text="Intitule" />
                               <TableColumn fx:id="DescriptionColumn" prefWidth="132.0" text="Description" />
                               <TableColumn fx:id="PrixColumn" prefWidth="132.0" text="Prix" />

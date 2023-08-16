@@ -37,7 +37,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Button fx:id="btnproduit" layoutY="76.0" mnemonicParsing="false" onAction="#openDeveloppeur2UI" prefHeight="40.0" prefWidth="248.0" text="LIste de produit" textAlignment="CENTER" />
+                  <Button fx:id="btnproduit" layoutY="76.0" mnemonicParsing="false" onAction="#openProduitUI" prefHeight="40.0" prefWidth="248.0" text="LIste de produit" textAlignment="CENTER" />
                   <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@resources/gamme-de-produits.png" />
@@ -156,7 +156,6 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                            <columns>
-                              <TableColumn fx:id="IdColumn" minWidth="-Infinity" prefWidth="105.0" text="#" />
                               <TableColumn fx:id="AppColumn" prefWidth="109.0" text="Intitule" />
                               <TableColumn fx:id="DescriptionColumn" prefWidth="132.0" text="Description" />
                               <TableColumn fx:id="PrixColumn" prefWidth="132.0" text="Prix" />

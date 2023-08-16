@@ -11,7 +11,7 @@ import com.gd.db.UMSDBException;
 
 import com.gd.model.Produit;
 import com.gd.model.Chef;
-
+import com.gd.model.Developpeur;
 import com.gd.run.GDApplication;
 
 import javafx.beans.property.SimpleDoubleProperty;
@@ -21,8 +21,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -62,6 +64,13 @@ public class ChefUIController {
 	@FXML
 	private TextField rechercherField;
 	
+	@FXML
+	private Button btncommande;
+	
+	@FXML
+	private Button btnproduit;
+	
+	
 	private Chef user;
 	@SuppressWarnings("unused")
 	private Stage dialogStage;
@@ -79,7 +88,6 @@ public class ChefUIController {
 	private void initialize() {
 		// Initialise la table des Produit
 		
-		IdColumn.setCellValueFactory(cellData -> new  SimpleObjectProperty<Integer>(cellData.getValue().getId()));
 		//DateColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<Date>(cellData.getValue().getDate()));
 		DescriptionColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescription()));
 		mise_ajourColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getOpendate()));
@@ -248,7 +256,23 @@ public class ChefUIController {
 		return id_produit;
 	}
 	
-
+	
+	
+	@FXML
+    private void openCommandeUI(ActionEvent event) {
+		Developpeur repp = new Developpeur();
+		GDApplication.getInstance().initDevelopeurLayout(repp);
+      Stage currentStage = (Stage) btnproduit.getScene().getWindow();
+      currentStage.close();
+	}
+	
+    @FXML
+    private void openProduitUI(ActionEvent event) {
+    	Chef repp = new Chef();
+		GDApplication.getInstance().initRapporteurLayout1(repp);
+      Stage currentStage = (Stage) btnproduit.getScene().getWindow();
+      currentStage.close();
+    }
 	
 	@FXML
 	private void ChangePassword() {
