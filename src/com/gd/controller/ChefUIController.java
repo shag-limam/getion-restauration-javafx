@@ -132,7 +132,7 @@ public class ChefUIController {
 	@FXML
 	private void handleNouveauIncident() {
 		Produit produit = new Produit();
-		produit.setRapporteur(this.getUser());
+		produit.setChef(this.getUser());
 
 		boolean validerClicked = GDApplication.getInstance().showIncidentEditUI(produit);
 		if (validerClicked) {

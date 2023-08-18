@@ -30,6 +30,7 @@ public interface IDaoImpl<T> {
 	List<String> listProductNames() throws UMSDBException;
 	T getProduitByName(String nomProduit) throws UMSDBException;
 
+	Produit getProduitByIntitule(String intitule) throws UMSDBException;
 	//public List<String> listProductNames();
 
 	//public Produit getProduitByName(String nomProduit);

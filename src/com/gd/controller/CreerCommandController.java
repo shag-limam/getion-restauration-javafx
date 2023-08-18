@@ -127,7 +127,7 @@ public class CreerCommandController {
 		if (isInputValid()) {
 			//commande.setIntitule(AppField.getText());
 			// Convert the String value to float before setting the prix
-	        float prixValue = Float.parseFloat(MontantTotalField.getText());
+	        double prixValue = Float.parseFloat(MontantTotalField.getText());
 	        int quantiteValue = Integer.parseInt(QuantiteField.getText());
 	        commande.setMontantTotal(prixValue);
 	        commande.setQuantite(quantiteValue);

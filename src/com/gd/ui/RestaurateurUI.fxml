@@ -124,7 +124,7 @@
                               <Insets bottom="10.0" left="7.0" right="7.0" top="10.0" />
                            </padding>
                            <children>
-                                 <Button mnemonicParsing="false" onAction="#handleNouveaucommande" style="-fx-background-color: #37b6cd;" text="Creer  ">
+                                 <Button mnemonicParsing="false" onAction="#handleNouvelleCommande" style="-fx-background-color: #37b6cd;" text="Creer  ">
                                  <graphic>
                                     <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

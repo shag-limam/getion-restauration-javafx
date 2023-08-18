@@ -148,6 +148,17 @@ public class ProduitDaoImpl implements IDaoImpl<Produit> {
         }
     }
 
+	@Override
+	public Produit getProduitByIntitule(String intitule) throws UMSDBException {
+	    try (Session session = HibernateConnection.getInstance().getSessionFactory().openSession()) {
+	        return session.createQuery("from Produit where intitule = :intitule", Produit.class)
+	                .setParameter("intitule", intitule)
+	                .uniqueResult();
+	    } catch (Exception e) {
+	        throw new UMSDBException("ERROR:" + e.getClass() + ":" + e.getMessage());
+	    }
+	}
+
 
 	//@Override
 	public Produit getProduitByName(String nomProduit) throws UMSDBException {

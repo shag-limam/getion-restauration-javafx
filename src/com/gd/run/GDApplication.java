@@ -18,6 +18,7 @@ import com.gd.controller.AdminUIController;
 import com.gd.controller.AjouterUserUIController;
 import com.gd.controller.CreerProduitController;
 import com.gd.controller.DeveloppeurUIController;
+import com.gd.controller.SaisieCommandeController;
 import com.gd.controller.ChefUIController;
 import com.gd.controller.CreerCommandController;
 
@@ -306,6 +307,9 @@ public class GDApplication extends Application {
 			return false;
 		}
 	}
+	
+	
+	
 	
 
 	// show Produit Edit Ui

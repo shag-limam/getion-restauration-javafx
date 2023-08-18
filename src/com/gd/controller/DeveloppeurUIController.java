@@ -24,6 +24,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
@@ -31,6 +32,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -44,7 +46,7 @@ public class DeveloppeurUIController {
 	@FXML
 	private TableColumn<Commande, String> dateCommandeColumn;
 	@FXML
-	private TableColumn<Commande, Float> montantTotalColumn;
+	private TableColumn<Commande, Double> montantTotalColumn;
 	@FXML
 	private TableColumn<Commande, String> etatPaiementColumn;
 	@FXML
@@ -115,7 +117,7 @@ public class DeveloppeurUIController {
 	    quantiteColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantite()).asObject());
 	    dateCommandeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateCommande().toString()));
 	    etatPaiementColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isPayee()));
-	    montantTotalColumn.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().getMontantTotal()).asObject());
+	    montantTotalColumn.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getMontantTotal()).asObject());
 	    ProduitColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduitc()));
 
 	    // Assuming commandeTable is properly associated with the corresponding TableView in FXML
@@ -187,6 +189,37 @@ public class DeveloppeurUIController {
 
 
 
+
+	@FXML
+	private void handleNouvelleCommande() {
+	    try {
+	    	FXMLLoader loader = new FXMLLoader();
+	    	loader.setLocation(GDApplication.class.getResource("../ui/SaisieCommandeUI.fxml"));
+	        Parent commandeUI = loader.load();
+	        
+//	        FXMLLoader loader = new FXMLLoader();
+//			loader.setLocation(GDApplication.class.getResource("../ui/CreerCommandeUI.fxml"));
+//			AnchorPane page = (AnchorPane) loader.load();
+	        
+	        Stage stage = new Stage();
+	        stage.setTitle("Ajouter Commande");
+	        stage.setScene(new Scene(commandeUI));
+	        stage.setOnHiding(event -> {
+	            try {
+	                // Rechargez les commandes depuis la base de données après la fermeture de la fenêtre de saisie
+	                // loadCommandes();
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	                // Gérez l'erreur ici selon vos besoins
+	            }
+	        });
+
+	        stage.show();
+	    } catch (IOException e) {
+	        e.printStackTrace(); // Ajoutez un point-virgule ici
+	        // Gérez l'erreur ici selon vos besoins
+	    }
+	}
 
 
 	private void rechercher() {

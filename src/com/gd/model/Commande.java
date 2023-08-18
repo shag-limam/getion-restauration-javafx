@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -24,6 +25,7 @@ public class Commande {
     private int id;
 
 
+    
 	
     @ManyToOne
     private Developpeur developpeur;
@@ -36,9 +38,21 @@ public class Commande {
     
     @ManyToOne
     private Produit produit;
+
     
+    public Commande() {
+        
+    }
+    public Commande(String nomClient, String dateCommande, List<Produit> produitsChoisis, Double montantTotal) {
+        this.nomClient = nomClient;
+        this.dateCommande = dateCommande;
+        this.produits = produitsChoisis;
+        this.montantTotal = montantTotal;
+    }
 
-
+    
+    @Column(name = "nomClient")
+	private String nomClient;
     
     @Column(name = "dateCommande")
 	private String dateCommande;
@@ -48,7 +62,7 @@ public class Commande {
     @Column(name = "produit")
 	private String produitC;
     @Column(name = "montantTotal")
-	private Float montantTotal;
+	private Double montantTotal;
     
     @Column(name = "payee")
 	private String payee;
@@ -100,11 +114,11 @@ public class Commande {
 		this.quantite = quantite;
 	}
 
-	public Float getMontantTotal() {
+	public Double getMontantTotal() {
 		return montantTotal;
 	}
 
-	public void setMontantTotal(float montantTotal) {
+	public void setMontantTotal(Double montantTotal) {
 		this.montantTotal = montantTotal;
 	}
 
