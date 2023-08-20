@@ -230,6 +230,7 @@ public class SaisieCommandeController implements Initializable {
         closeWindow();
     }
 */
+    
     @FXML
     private void handleEnregistrerCommande() throws UMSDBException {
         String nomClient = clientField.getText();
@@ -244,21 +245,25 @@ public class SaisieCommandeController implements Initializable {
             int quantiteChoisie = Integer.parseInt(infoArray[1].replace("Quantité: ", ""));
             double montant = Double.parseDouble(infoArray[2].replace("Montant: ", ""));
 
-            //Produit produit = produitDAO.getProduitByName(intitule);
-//            if (produit != null) {
-//                produitsChoisis.add(produit);
-//                quantitesChoisies.add(quantiteChoisie);
-//            }
+            Produit produit = produitDAO.getProduitByIntitule(intitule);
+            if (produit != null) {
+                produitsChoisis.add(produit);
+                quantitesChoisies.add(quantiteChoisie);
+            }
         }
 
-        Commande commande = new Commande(nomClient, dateCommande, produitsChoisis, montantTotal);
+       // int quantiteChoisieTotale = quantitesChoisies.stream().mapToInt(Integer::intValue).sum();
+       // Commande commande = new Commande(nomClient, dateCommande, quantiteChoisieTotale, produitsChoisis, montantTotal);
+       
+        Commande commande = new Commande(nomClient, dateCommande, produitsChoisis, quantitesChoisies, montantTotal);
         commandeDAO.create(commande);
+        
 
         for (int i = 0; i < produitsChoisis.size(); i++) {
             Produit produit = produitsChoisis.get(i);
             int quantiteChoisie = quantitesChoisies.get(i);
             produit.setQuantite(produit.getQuantite() - quantiteChoisie);
-            produitDAO.update(produit);
+            produitDAO.update1(produit);
         }
 
         showAlert("Commande enregistrée", "La commande a été enregistrée avec succès!");

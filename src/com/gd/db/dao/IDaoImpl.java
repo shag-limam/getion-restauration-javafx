@@ -33,6 +33,8 @@ public interface IDaoImpl<T> {
 	Produit getProduitByIntitule(String intitule) throws UMSDBException;
 	//public List<String> listProductNames();
 
+	void update1(Produit produit) throws UMSDBException;
+
 	//public Produit getProduitByName(String nomProduit);
 
 	//List<String> listProductNames() throws UMSDBException;

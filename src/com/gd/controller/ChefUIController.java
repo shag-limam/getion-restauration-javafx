@@ -15,6 +15,7 @@ import com.gd.model.Developpeur;
 import com.gd.run.GDApplication;
 
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -53,6 +54,8 @@ public class ChefUIController {
 	@FXML
 	private TableColumn<Produit, Integer> IdColumn;
 	@FXML
+	private TableColumn<Produit, Integer> quantiteColumn;
+	@FXML
 	private TableColumn<Produit, Double> PrixColumn;
 	
 	@FXML
@@ -89,6 +92,7 @@ public class ChefUIController {
 		// Initialise la table des Produit
 		
 		//DateColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<Date>(cellData.getValue().getDate()));
+		quantiteColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantite()).asObject());
 		DescriptionColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescription()));
 		mise_ajourColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getOpendate()));
 		EtatProduiColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEtat()));

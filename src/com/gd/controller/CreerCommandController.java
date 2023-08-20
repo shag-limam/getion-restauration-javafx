@@ -13,6 +13,7 @@ import com.gd.model.Produit;
 import com.gd.run.GDApplication;
 
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -47,6 +48,8 @@ public class CreerCommandController {
 	private TableColumn<Produit, String> AppColumn;
 	@FXML
 	private TableColumn<Produit, Integer> IdColumn;
+	@FXML
+	private TableColumn<Produit, Integer> quantiteColumn;
 	@FXML
 	private TableColumn<Produit, Double> PrixColumn;
 	

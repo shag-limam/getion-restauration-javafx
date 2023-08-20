@@ -142,6 +142,7 @@
                            <columns>
                               <TableColumn fx:id="ProduitColumn" prefWidth="132.0" text="Produit" />
                               <TableColumn fx:id="quantiteColumn" prefWidth="132.0" text="quntite" />
+                              <TableColumn fx:id="quantitesProduitsColumn" prefWidth="132.0" text="quntite liste" />
                               <TableColumn fx:id="dateCommandeColumn" prefWidth="132.0" text="date" />
                               <TableColumn fx:id="montantTotalColumn" prefWidth="109.0" text="prix" />
                               <TableColumn fx:id="etatPaiementColumn" prefWidth="109.0" text="Etat paiement" />

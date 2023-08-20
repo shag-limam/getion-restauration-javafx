@@ -178,6 +178,8 @@ public class DataSource {
 	    this.commandes.addAll(commandes);
 	}
 	
+	
+	
 	public void UpdateCommande(Commande commande, int selectedIndex) throws UMSDBException {
 		commandes.remove(selectedIndex);
 		commandes.add(selectedIndex, commande);

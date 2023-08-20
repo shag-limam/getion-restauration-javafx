@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.gd.db.UMSDBException;
 import com.gd.model.Chef;
@@ -51,6 +52,8 @@ public class DeveloppeurUIController {
 	private TableColumn<Commande, String> etatPaiementColumn;
 	@FXML
 	private TableColumn<Commande, String>ProduitColumn;
+	@FXML
+	private TableColumn<Commande, String> quantitesProduitsColumn;
 
 	@FXML
 	private TableView<Produit> ProduitTable;
@@ -113,7 +116,30 @@ public class DeveloppeurUIController {
 	
 	@FXML
 	private void initialize() {
+		 ProduitColumn.setCellValueFactory(cellData -> {
+		        List<Produit> produits = cellData.getValue().getProduits();
+		        StringBuilder produitNames = new StringBuilder();
+
+		        for (Produit produit : produits) {
+		            produitNames.append(produit.getIntitule()).append(", ");
+		        }
+
+		        return new SimpleStringProperty(produitNames.toString());
+		    });
+
+		
+		quantitesProduitsColumn.setCellValueFactory(cellData -> {
+	        List<Integer> quantitesProduits = cellData.getValue().getQuantitesProduits();
+	        StringBuilder quantites = new StringBuilder();
+
+	        for (int quantite : quantitesProduits) {
+	            quantites.append(quantite).append(", ");
+	        }
+
+	        return new SimpleStringProperty(quantites.toString());
+	    });
 	    // Initialise the Commande table
+		//quantiteColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantite()).asObject());
 	    quantiteColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantite()).asObject());
 	    dateCommandeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateCommande().toString()));
 	    etatPaiementColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isPayee()));
@@ -122,6 +148,9 @@ public class DeveloppeurUIController {
 
 	    // Assuming commandeTable is properly associated with the corresponding TableView in FXML
 	    commandeTable.setItems(GDApplication.getInstance().getDataSource().getCommandes());
+	    
+	   // commandeTable.getColumns().addAll(produitCommandeColumn, quantiteColumn, quantitesProduitsColumn, dateCommandeColumn, montantTotalColumn, etatPaiementColumn);
+
 
 	    // Initialise the Produit table
 	    

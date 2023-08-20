@@ -158,6 +158,18 @@ public class ProduitDaoImpl implements IDaoImpl<Produit> {
 	        throw new UMSDBException("ERROR:" + e.getClass() + ":" + e.getMessage());
 	    }
 	}
+	
+	@Override
+    public void update1(Produit produit) throws UMSDBException {
+        try (Session session = HibernateConnection.getInstance().getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.update(produit);
+            transaction.commit();
+        } catch (Exception e) {
+            throw new UMSDBException("ERROR:" + e.getClass() + ":" + e.getMessage());
+        }
+    }
+
 
 
 	//@Override

@@ -179,9 +179,9 @@ public class Produit implements Serializable {
     @ManyToOne
     private Developpeur developpeur;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "produit_id")
-    
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "produit_id")
+                          
 
 
  

@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -26,7 +27,8 @@ public class CreerProduitController {
 	private TextArea DesField;
 	@FXML
 	private TextField PrixField;
-		
+	@FXML
+	private TextField quantiteColumn;
 	@FXML
 	private DatePicker Date;
 
@@ -42,6 +44,7 @@ public class CreerProduitController {
 	    PrixField.setText(String.valueOf(produit.getPrix())); // Convert float to String
 		DesField.setText(produit.getDescription());
 		Date.getEditor().setText(produit.getOpendate());
+		quantiteColumn.setText(String.valueOf(produit.getQuantite())); 
 		
 	}
 
@@ -56,7 +59,9 @@ public class CreerProduitController {
 			produit.setIntitule(AppField.getText());
 			// Convert the String value to float before setting the prix
 	        float prixValue = Float.parseFloat(PrixField.getText());
+	        int quantiteValue = Integer.parseInt(quantiteColumn.getText());
 	        produit.setPrix(prixValue);
+	        produit.setQuantite(quantiteValue);
 			produit.setDescription(DesField.getText());
 			produit.setEtat(NiveauComboBox.getSelectionModel().getSelectedItem());
 			produit.setOpendate(Date.getEditor().getText().toString());

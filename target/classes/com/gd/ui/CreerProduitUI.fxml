@@ -66,6 +66,11 @@
                   <Insets left="30.0" />
                </GridPane.margin>
             </Label>
+            <Label text="Quantite :" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
             <TextField fx:id="AppField" prefHeight="36.0" prefWidth="322.0" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets right="20.0" />
@@ -102,8 +107,14 @@
                </GridPane.margin>
             </Label>
             <DatePicker fx:id="Date" editable="false" prefHeight="34.0" prefWidth="379.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="PrixField1" prefHeight="36.0" prefWidth="382.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Quantite :" GridPane.rowIndex="2" />
+            
+            <TextField fx:id="quantiteColumn" prefHeight="36.0" prefWidth="322.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            
+            
          </children>
       </GridPane>
       <ImageView fitHeight="36.0" fitWidth="29.0" layoutX="30.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
