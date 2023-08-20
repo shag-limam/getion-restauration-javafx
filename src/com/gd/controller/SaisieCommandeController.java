@@ -81,7 +81,7 @@ public class SaisieCommandeController implements Initializable {
         intituleColumn.setCellValueFactory(cellData -> cellData.getValue().intituleProperty());
         prixColumn.setCellValueFactory(cellData -> cellData.getValue().prixProperty().asObject());
         quantiteColumn.setCellValueFactory(cellData -> cellData.getValue().quantiteProperty().asObject());
-        statutColumn.setCellValueFactory(cellData -> cellData.getValue().etatProperty());
+        //statutColumn.setCellValueFactory(cellData -> cellData.getValue().etatProperty());
 
         // Charger les produits en stock dans le TableView
         try {
@@ -114,7 +114,7 @@ public class SaisieCommandeController implements Initializable {
 		intituleColumn.setText(produit.getIntitule());
 		prixColumn.setText(String.valueOf(produit.getPrix())); // Convert float to String
 		quantiteColumn.setText(String.valueOf(produit.getQuantite()));
-		statutColumn.setText(produit.getEtat());
+		//statutColumn.setText(produit.getEtat());
 		
 	}
 

@@ -110,7 +110,20 @@ public class Commande {
 
 	@Column(name = "produit")
 	private String produitC;
-    @Column(name = "montantTotal")
+	
+    public String getNomClient() {
+		return nomClient;
+	}
+
+	public void setNomClient(String nomClient) {
+		this.nomClient = nomClient;
+	}
+
+
+
+
+
+	@Column(name = "montantTotal")
 	private Double montantTotal;
     
     @Column(name = "payee")

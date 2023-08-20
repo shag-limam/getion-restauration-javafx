@@ -34,8 +34,8 @@ public class CreerProduitController {
 
 	@FXML
 	private void initialize() {
-		NiveauComboBox.getItems().clear();
-		NiveauComboBox.getItems().addAll("Indisponible","Disponible");
+//		NiveauComboBox.getItems().clear();
+//		NiveauComboBox.getItems().addAll("Indisponible","Disponible");
 	}
 
 	public void setProduit(Produit produit) {
@@ -63,7 +63,7 @@ public class CreerProduitController {
 	        produit.setPrix(prixValue);
 	        produit.setQuantite(quantiteValue);
 			produit.setDescription(DesField.getText());
-			produit.setEtat(NiveauComboBox.getSelectionModel().getSelectedItem());
+			//produit.setEtat(NiveauComboBox.getSelectionModel().getSelectedItem());
 			produit.setOpendate(Date.getEditor().getText().toString());
 
 			validerClicked = true;

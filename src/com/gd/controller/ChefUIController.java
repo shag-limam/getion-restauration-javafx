@@ -58,8 +58,7 @@ public class ChefUIController {
 	@FXML
 	private TableColumn<Produit, Double> PrixColumn;
 	
-	@FXML
-	private TableColumn<Produit, String>EtatProduiColumn;
+	
 	
 	@FXML
 	private MenuButton MenuButtonField;
@@ -95,7 +94,7 @@ public class ChefUIController {
 		quantiteColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantite()).asObject());
 		DescriptionColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescription()));
 		mise_ajourColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getOpendate()));
-		EtatProduiColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEtat()));
+		//EtatProduiColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEtat()));
 		AppColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIntitule()));
         PrixColumn.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getPrix()).asObject());
        // ImageColumn.setCellValueFactory(cellData -> cellData.getValue().imageProperty());

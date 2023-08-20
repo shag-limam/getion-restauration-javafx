@@ -170,8 +170,6 @@ public class Produit implements Serializable {
     @Column(name = "prix")
     private float prix;
 
-    @Column(name = "etatproduit")
-    private String etat;
 
     @ManyToOne
     private Chef chef;
@@ -190,9 +188,7 @@ public class Produit implements Serializable {
         return new SimpleStringProperty(intitule);
     }
     
-    public StringProperty etatProperty() {
-        return new SimpleStringProperty(etat);
-    }
+    
     
     public IntegerProperty quantiteProperty() {
         return new SimpleIntegerProperty(quantite);
@@ -270,13 +266,7 @@ public class Produit implements Serializable {
 		this.prix = prix;
 	}
 
-	public String getEtat() {
-		return etat;
-	}
-
-	public void setEtat(String etatproduit) {
-		this.etat = etatproduit;
-	}
+	
 
 	public Chef getChef() {
 		return chef;

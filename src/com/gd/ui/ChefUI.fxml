@@ -160,7 +160,6 @@
                               <TableColumn fx:id="DescriptionColumn" prefWidth="132.0" text="Description" />
                               <TableColumn fx:id="PrixColumn" prefWidth="132.0" text="Prix" />
                               <TableColumn fx:id="quantiteColumn" prefWidth="132.0" text="Quantite" />
-                              <TableColumn fx:id="EtatProduiColumn" prefWidth="109.0" text="Etat" />
                               <TableColumn fx:id="mise_ajourColumn" prefWidth="109.0" text="Deriére mise ajour" />
                            </columns>
                         </TableView>

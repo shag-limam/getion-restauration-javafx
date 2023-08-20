@@ -43,6 +43,8 @@ public class DeveloppeurUIController {
 	@FXML
 	private TableColumn<Commande, String> produitCommandeColumn;
 	@FXML
+	private TableColumn<Commande, String> nomClientColumn;
+	@FXML
 	private TableColumn<Commande, Integer> quantiteColumn;
 	@FXML
 	private TableColumn<Commande, String> dateCommandeColumn;
@@ -51,7 +53,7 @@ public class DeveloppeurUIController {
 	@FXML
 	private TableColumn<Commande, String> etatPaiementColumn;
 	@FXML
-	private TableColumn<Commande, String>ProduitColumn;
+	private TableColumn<Commande, String>ProduitColu;
 	@FXML
 	private TableColumn<Commande, String> quantitesProduitsColumn;
 
@@ -116,8 +118,9 @@ public class DeveloppeurUIController {
 	
 	@FXML
 	private void initialize() {
-		 ProduitColumn.setCellValueFactory(cellData -> {
-		        List<Produit> produits = cellData.getValue().getProduits();
+		 
+		ProduitColu.setCellValueFactory(cellData -> {
+		        List<Produit> produits = cellData.getValue().getProduits(); // Utilisez la méthode getProduits() pour obtenir la liste de produits pour une commande
 		        StringBuilder produitNames = new StringBuilder();
 
 		        for (Produit produit : produits) {
@@ -127,6 +130,8 @@ public class DeveloppeurUIController {
 		        return new SimpleStringProperty(produitNames.toString());
 		    });
 
+		    // Le reste de votre initialisation...
+		
 		
 		quantitesProduitsColumn.setCellValueFactory(cellData -> {
 	        List<Integer> quantitesProduits = cellData.getValue().getQuantitesProduits();
@@ -140,11 +145,11 @@ public class DeveloppeurUIController {
 	    });
 	    // Initialise the Commande table
 		//quantiteColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantite()).asObject());
-	    quantiteColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantite()).asObject());
 	    dateCommandeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateCommande().toString()));
 	    etatPaiementColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isPayee()));
+	    //nomClientColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNomClient()));
+	    nomClientColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNomClient()));
 	    montantTotalColumn.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getMontantTotal()).asObject());
-	    ProduitColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduitc()));
 
 	    // Assuming commandeTable is properly associated with the corresponding TableView in FXML
 	    commandeTable.setItems(GDApplication.getInstance().getDataSource().getCommandes());
@@ -236,7 +241,7 @@ public class DeveloppeurUIController {
 	        stage.setOnHiding(event -> {
 	            try {
 	                // Rechargez les commandes depuis la base de données après la fermeture de la fenêtre de saisie
-	                // loadCommandes();
+	                 loadCommandes();
 	            } catch (Exception e) {
 	                e.printStackTrace();
 	                // Gérez l'erreur ici selon vos besoins
@@ -251,6 +256,11 @@ public class DeveloppeurUIController {
 	}
 
 
+	private void loadCommandes() {
+        // Charger les commandes depuis la source de données
+        ObservableList<Commande> commandes = GDApplication.getInstance().getDataSource().getCommandes();
+        commandeTable.setItems(commandes);
+    }
 	private void rechercher() {
 
 		FilteredList<Commande> filteredData = new FilteredList<>(

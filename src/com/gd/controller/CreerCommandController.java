@@ -83,7 +83,7 @@ public class CreerCommandController {
 		//DateColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<Date>(cellData.getValue().getDate()));
 		DescriptionColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescription()));
 		mise_ajourColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getOpendate()));
-		EtatProduiColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEtat()));
+		//EtatProduiColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEtat()));
 		AppColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIntitule()));
         PrixColumn.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getPrix()).asObject());
        // ImageColumn.setCellValueFactory(cellData -> cellData.getValue().imageProperty());
