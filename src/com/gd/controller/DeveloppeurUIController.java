@@ -7,6 +7,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.gd.db.UMSDBException;
+import com.gd.db.dao.CommandeDaoImpl;
+import com.gd.db.dao.IDaoCommandImpl;
+import com.gd.db.dao.IDaoImpl;
+import com.gd.db.dao.ProduitDaoImpl;
 import com.gd.model.Chef;
 import com.gd.model.Commande;
 import com.gd.model.Developpeur;
@@ -57,6 +61,9 @@ public class DeveloppeurUIController {
 	@FXML
 	private TableColumn<Commande, String> quantitesProduitsColumn;
 
+	private Commande commande;
+	private IDaoCommandImpl commandeDAO;
+    private IDaoImpl<Produit> produitDAO;
 	@FXML
 	private TableView<Produit> ProduitTable;
 	@FXML
@@ -164,7 +171,10 @@ public class DeveloppeurUIController {
 	    rechercher();
 	}
 
-	
+	public DeveloppeurUIController() {
+    	produitDAO=new ProduitDaoImpl();
+    	commandeDAO=new CommandeDaoImpl();
+    }
 
 	
 //	@FXML
@@ -215,8 +225,7 @@ public class DeveloppeurUIController {
 	
 	private void addChangeListener() {
 	//	IncidentTable.getSelectionModel().selectedItemProperty().addListener(
-
-		      //  (observable, oldValue, newValue) -> displayNoteMsDetails(newValue));
+	//  (observable, oldValue, newValue) -> displayNoteMsDetails(newValue));
 
 		}
 	
@@ -256,11 +265,12 @@ public class DeveloppeurUIController {
 	}
 
 
-	private void loadCommandes() {
-        // Charger les commandes depuis la source de données
-        ObservableList<Commande> commandes = GDApplication.getInstance().getDataSource().getCommandes();
-        commandeTable.setItems(commandes);
-    }
+	private void loadCommandes() throws UMSDBException {
+        List<Commande> commandes = commandeDAO.list();
+        ObservableList<Commande> commandeList = FXCollections.observableArrayList(commandes);
+        commandeTable.setItems(commandeList);
+	}
+	
 	private void rechercher() {
 
 		FilteredList<Commande> filteredData = new FilteredList<>(

@@ -271,6 +271,11 @@ public class SaisieCommandeController implements Initializable {
         closeWindow();
     }
 
+    @FXML
+	private void handleAnnuler() {
+		
+		closeWindow();
+	}
     
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;

@@ -6,7 +6,10 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="736.0" style="-fx-background-color: #37b6cd;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gd.controller.SaisieCommandeController">
 
@@ -21,6 +24,7 @@
                     <TableColumn fx:id="statutColumn" text="Statut" />
         </columns>
       </TableView>
+      <FlowPane layoutY="496.0" prefHeight="36.0" prefWidth="736.0" style="-fx-background-color: #FFFFFF;" />
       <AnchorPane layoutX="388.0" layoutY="39.0" prefHeight="449.0" prefWidth="314.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <Label layoutX="20.0" layoutY="31.0" text="Nom_Client" />
@@ -34,13 +38,19 @@
             <TextField fx:id="totalField" layoutX="146.0" layoutY="360.0" />
             <Label layoutX="36.0" layoutY="364.0" text="Total" />
             <Label layoutX="25.0" layoutY="167.0" text="Produits :" />
-            <Button layoutX="164.0" layoutY="415.0" mnemonicParsing="false" onAction="#handleEnregistrerCommande" text="Enregistrer commande" />
+            <Button layoutX="151.0" layoutY="415.0" mnemonicParsing="false" onAction="#handleEnregistrerCommande" prefHeight="25.0" prefWidth="158.0" text="Enregistrer commande" />
             <TextField fx:id="quantiteField" layoutX="140.0" layoutY="132.0" />
             <Label layoutX="21.0" layoutY="99.0" text="Intitulé" />
+            <ImageView fitHeight="17.0" fitWidth="15.0" layoutX="151.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/send.png" />
+               </image>
+            </ImageView>
    
          </children>
       </AnchorPane>
-      <Button layoutX="33.0" layoutY="481.0" mnemonicParsing="false" onAction="#handleSelectionner" text="Selectionner" />
+      <Button layoutX="33.0" layoutY="502.0" mnemonicParsing="false" onAction="#handleSelectionner" text="Selectionner" />
+      <Button layoutX="631.0" layoutY="502.0" mnemonicParsing="false" onAction="#handleAnnuler" prefHeight="17.0" prefWidth="62.0" text="Annuler" />
    </children>
   
 </AnchorPane>
