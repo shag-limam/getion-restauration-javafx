@@ -78,12 +78,13 @@ public class Commande {
 //        this.quantite = quantite;
 //    }
     
-    public Commande(String nomClient, String dateCommande, List<Produit> produitsChoisis, List<Integer> quantitesChoisies, Double montantTotal) {
+    public Commande(String nomClient, String dateCommande, List<Produit> produitsChoisis, List<Integer> quantitesChoisies, Double montantTotal,String payee) {
         this.nomClient = nomClient;
         this.dateCommande = dateCommande;
         this.produits = produitsChoisis;
         this.montantTotal = montantTotal;
         this.quantitesProduits = quantitesChoisies;
+        this.payee = nomClient;
     }
 
 
@@ -126,8 +127,10 @@ public class Commande {
 	@Column(name = "montantTotal")
 	private Double montantTotal;
     
-    @Column(name = "payee")
-	private String payee;
+   
+    @Column(name = "payee", columnDefinition = "VARCHAR(255) DEFAULT 'Non payée'")
+    private String payee;
+
 
 	public int getId() {
 		return id;

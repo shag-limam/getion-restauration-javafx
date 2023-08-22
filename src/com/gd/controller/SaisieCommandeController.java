@@ -27,8 +27,10 @@ import org.hibernate.Transaction;
 
 public class SaisieCommandeController implements Initializable {
 
+//    @FXML
+//    private TextField dateField;
     @FXML
-    private TextField dateField;
+    private DatePicker datePField;
     
     private Stage dialogStage;
     
@@ -81,7 +83,7 @@ public class SaisieCommandeController implements Initializable {
         intituleColumn.setCellValueFactory(cellData -> cellData.getValue().intituleProperty());
         prixColumn.setCellValueFactory(cellData -> cellData.getValue().prixProperty().asObject());
         quantiteColumn.setCellValueFactory(cellData -> cellData.getValue().quantiteProperty().asObject());
-        //statutColumn.setCellValueFactory(cellData -> cellData.getValue().etatProperty());
+        statutColumn.setCellValueFactory(cellData -> cellData.getValue().getatProperty());
 
         // Charger les produits en stock dans le TableView
         try {
@@ -114,7 +116,7 @@ public class SaisieCommandeController implements Initializable {
 		intituleColumn.setText(produit.getIntitule());
 		prixColumn.setText(String.valueOf(produit.getPrix())); // Convert float to String
 		quantiteColumn.setText(String.valueOf(produit.getQuantite()));
-		//statutColumn.setText(produit.getEtat());
+		statutColumn.setText(produit.getEtatproduit());
 		
 	}
 
@@ -234,7 +236,10 @@ public class SaisieCommandeController implements Initializable {
     @FXML
     private void handleEnregistrerCommande() throws UMSDBException {
         String nomClient = clientField.getText();
-        String dateCommande = dateField.getText();
+        
+        LocalDate selectedDate = datePField.getValue();
+        String dateCommande = selectedDate.toString();
+        
         double montantTotal = this.montantTotal;
         List<Produit> produitsChoisis = new ArrayList<>();
         List<Integer> quantitesChoisies = new ArrayList<>();
@@ -255,7 +260,8 @@ public class SaisieCommandeController implements Initializable {
        // int quantiteChoisieTotale = quantitesChoisies.stream().mapToInt(Integer::intValue).sum();
        // Commande commande = new Commande(nomClient, dateCommande, quantiteChoisieTotale, produitsChoisis, montantTotal);
        
-        Commande commande = new Commande(nomClient, dateCommande, produitsChoisis, quantitesChoisies, montantTotal);
+        String etat = null;
+        Commande commande = new Commande(nomClient, dateCommande, produitsChoisis, quantitesChoisies, montantTotal,etat);
         commandeDAO.create(commande);
         
 
