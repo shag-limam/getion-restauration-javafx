@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -31,13 +32,13 @@
             <Label layoutX="20.0" layoutY="31.0" text="Nom_Client" />
             <TextField fx:id="clientField" layoutX="140.0" layoutY="24.0" />
             <Label layoutX="24.0" layoutY="65.0" text="Date" />
-            <ListView fx:id="produitsListView" layoutX="22.0" layoutY="192.0" prefHeight="159.0" prefWidth="272.0" />
+            <ListView fx:id="produitsListView" layoutX="22.0" layoutY="214.0" prefHeight="137.0" prefWidth="272.0" />
             <Button layoutX="30.0" layoutY="414.0" mnemonicParsing="false" onAction="#handleAjouterProduit" text="Ajouter produit" />
             <TextField fx:id="intituleField" editable="false" layoutX="140.0" layoutY="95.0" />
             <Label layoutX="22.0" layoutY="136.0" text="Quantité" />
             <TextField fx:id="totalField" layoutX="146.0" layoutY="360.0" />
             <Label layoutX="36.0" layoutY="364.0" text="Total" />
-            <Label layoutX="25.0" layoutY="167.0" text="Produits :" />
+            <Label layoutX="25.0" layoutY="194.0" text="Produits :" />
             <Button layoutX="151.0" layoutY="415.0" mnemonicParsing="false" onAction="#handleEnregistrerCommande" prefHeight="25.0" prefWidth="158.0" text="Enregistrer commande" />
             <TextField fx:id="quantiteField" layoutX="140.0" layoutY="132.0" />
             <Label layoutX="21.0" layoutY="99.0" text="Intitulé" />
@@ -47,6 +48,8 @@
                </image>
             </ImageView>
             <DatePicker fx:id="datePField" editable="false" layoutX="141.0" layoutY="59.0" prefHeight="25.0" prefWidth="149.0" />
+            <Label layoutX="28.0" layoutY="169.0" text="Etat :" />
+            <ComboBox fx:id="NiveauComboBox" layoutX="140.0" layoutY="164.0" prefHeight="17.0" prefWidth="149.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 2; -fx-border-color: #E5E5E5;" />
    
          </children>
       </AnchorPane>

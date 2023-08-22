@@ -18,6 +18,7 @@ import com.gd.controller.AdminUIController;
 import com.gd.controller.AjouterUserUIController;
 import com.gd.controller.CreerProduitController;
 import com.gd.controller.DeveloppeurUIController;
+import com.gd.controller.ModifierEtatController;
 import com.gd.controller.SaisieCommandeController;
 import com.gd.controller.ChefUIController;
 import com.gd.controller.CreerCommandController;
@@ -341,7 +342,33 @@ public class GDApplication extends Application {
 	}
 
 	// show Produit Commentaire Ui
+	// show Incident Etat Ui
+		public boolean showModifierEtatUI(Commande commande) {
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(GDApplication.class.getResource("../ui/ModifierEtatUI.fxml"));
+				AnchorPane page = (AnchorPane) loader.load();
+				// Create the dialog Stage.
+				Stage dialogStage = new Stage();
+				dialogStage.setTitle("Modifier Etat");
+				dialogStage.initModality(Modality.WINDOW_MODAL);
+				//dialogStage.initOwner(RespoStage);
+				dialogStage.setResizable(false);
 
+				dialogStage.setScene(new Scene(page));
+
+				ModifierEtatController controller = loader.getController();
+				controller.setDialogStage(dialogStage);
+				controller.setcommande(commande);
+				// Show the dialog and wait until the user closes it
+				dialogStage.showAndWait();
+
+				return controller.isValiderClicked();
+			} catch (IOException e) {
+				System.err.println(e.getMessage());
+				return false;
+			}
+		}
 
 	// show Produit image
 	public byte[] selectImage() {

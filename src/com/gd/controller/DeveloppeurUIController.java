@@ -31,6 +31,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableColumn;
@@ -97,6 +99,8 @@ public class DeveloppeurUIController {
 	private Button btnproduit;
 	@FXML
 	private Button btncommande;
+	@FXML
+	private Button btnmodi;
 
 	@FXML
 	private TextField rechercherField;
@@ -177,6 +181,38 @@ public class DeveloppeurUIController {
     }
 
 	
+	@FXML
+	private void handleModifierEtat() {
+
+		Commande selectedIncident = commandeTable.getSelectionModel().getSelectedItem();
+		int selectedIndex = commandeTable.getSelectionModel().getSelectedIndex();
+
+		if (selectedIncident != null) {
+			boolean validerClicked = GDApplication.getInstance().showModifierEtatUI(selectedIncident);
+			if (validerClicked) {
+
+				try {
+					GDApplication.getInstance().getDataSource().UpdateCommande(selectedIncident, selectedIndex);
+					GDApplication.getInstance().getUtilitaire().displayNotification(" Incident update avec succès !");
+				} catch (UMSDBException e) {
+					// TODO Auto-generated catch block
+					GDApplication.getInstance().getUtilitaire().displayErrorMessage("Error : " + e.getMessage());
+				}
+
+				commandeTable.refresh();
+
+			}
+		} else {
+			// Nothing selected.
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Aucune sélection");
+			alert.setHeaderText("Aucun Ticket n'a été sélectionné !");
+			alert.setContentText("Veuillez choisir un Ticket svp !.");
+			alert.showAndWait();
+		}
+	}
+	
+	
 //	@FXML
 //	private void initialize() {
 //	    // Initialise la table des commandes
@@ -215,7 +251,32 @@ public class DeveloppeurUIController {
 			}
 		}
 	}
-	
+//	
+//	@FXML
+//    private void handleOpenModifierEtatUI() {
+//        try {
+//            Commande selectedCommande = commandeTable.getSelectionModel().getSelectedItem();
+//            if (selectedCommande == null) {
+//                showAlert("Aucune commande sélectionnée", "Veuillez sélectionner une commande avant de continuer.");
+//                return;
+//            }
+//            
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("../ui/ModifierEtatUI.fxml"));
+//            Parent modifierEtatUI = loader.load();
+//            
+//            ModifierEtatController modifierEtatController = loader.getController();
+//            modifierEtatController.setSelectedCommande(selectedCommande); // Set the selected Commande
+//
+//            Stage stage = new Stage();
+//            stage.setTitle("Modifier l'état de paiement");
+//            stage.setScene(new Scene(modifierEtatUI));
+//            stage.show();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            // Handle the error
+//        }
+//    }
+
 	
 
 	
@@ -231,7 +292,13 @@ public class DeveloppeurUIController {
 	
 
 
-
+	  private void showAlert(String title, String message) {
+	        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+	        alert.setTitle(title);
+	        alert.setHeaderText(null);
+	        alert.setContentText(message);
+	        alert.showAndWait();
+	    }
 
 	@FXML
 	private void handleNouvelleCommande() {
@@ -264,6 +331,10 @@ public class DeveloppeurUIController {
 	    }
 	}
 
+
+	public Commande getSelectedCommande() {
+	    return commandeTable.getSelectionModel().getSelectedItem();
+	}
 
 	private void loadCommandes() throws UMSDBException {
         List<Commande> commandes = commandeDAO.list();

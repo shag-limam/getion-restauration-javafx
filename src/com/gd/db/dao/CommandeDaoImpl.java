@@ -7,6 +7,7 @@ import javax.persistence.Query;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.SessionFactory;
 
 import com.gd.db.HibernateConnection;
 import com.gd.db.UMSDBException;
@@ -14,7 +15,30 @@ import com.gd.model.Commande;
 import com.gd.model.Developpeur;
 
 public class CommandeDaoImpl implements IDaoCommandImpl<Commande> {
+	
+	 private SessionFactory sessionFactory;
 
+	    public void setSessionFactory(SessionFactory sessionFactory) {
+	        this.sessionFactory = sessionFactory;
+	    }
+
+	    // Rest of the class...
+
+	    public void updatee(Commande commande) {
+	        if (sessionFactory == null) {
+	            throw new IllegalStateException("SessionFactory has not been set.");
+	        }
+
+	        Session session = sessionFactory.getCurrentSession();
+	        try {
+	            session.beginTransaction();
+	            session.update(commande);
+	            session.getTransaction().commit();
+	        } catch (Exception e) {
+	            session.getTransaction().rollback();
+	            throw e;
+	        }
+	    }
     @Override
     public void create(Commande obj) throws UMSDBException {
         try {
@@ -26,6 +50,8 @@ public class CommandeDaoImpl implements IDaoCommandImpl<Commande> {
             throw new UMSDBException("ERROR:" + e.getClass() + ":" + e.getMessage());
         }
     }
+    
+   
     
 
     @Override

@@ -84,7 +84,7 @@ public class Commande {
         this.produits = produitsChoisis;
         this.montantTotal = montantTotal;
         this.quantitesProduits = quantitesChoisies;
-        this.payee = nomClient;
+        this.payee = payee;
     }
 
 

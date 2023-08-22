@@ -5,15 +5,19 @@ import com.gd.db.UMSDBException;
 import com.gd.db.dao.*;
 import com.gd.model.Commande;
 import com.gd.model.Produit;
+import com.gd.run.GDApplication;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -38,8 +42,14 @@ public class SaisieCommandeController implements Initializable {
 
 	private Produit produit;
 	
+	@FXML
+	private TableView<Commande> commandeTable;
+
+	
     @FXML
     private TextField clientField;
+    @FXML
+	private ComboBox<String> NiveauComboBox;
     @FXML
     private TextField intituleField;
 
@@ -70,8 +80,12 @@ public class SaisieCommandeController implements Initializable {
     private ObservableList<String> produitsSelectionnesList;
     private Commande commande;
     private double montantTotal = 0.0;
-   private IDaoCommandImpl commandeDAO;
+    private IDaoCommandImpl commandeDAO;
     private IDaoImpl<Produit> produitDAO;
+
+    private DeveloppeurUIController developpeurUIController;
+
+	
     public SaisieCommandeController() {
     	produitDAO=new ProduitDaoImpl();
     	commandeDAO=new CommandeDaoImpl();
@@ -95,6 +109,8 @@ public class SaisieCommandeController implements Initializable {
         // Initialiser la liste des produits sélectionnés
         produitsSelectionnesList = FXCollections.observableArrayList();
         produitsListView.setItems(produitsSelectionnesList);
+        NiveauComboBox.getItems().clear();
+	    NiveauComboBox.getItems().addAll("Payée", "Non payée");
     }
 
     private void loadProduitsEnStock() throws UMSDBException {
@@ -232,10 +248,50 @@ public class SaisieCommandeController implements Initializable {
         closeWindow();
     }
 */
+    private Commande selectedCommande;
+
+    public void setSelectedCommande(Commande selectedCommande) {
+        this.selectedCommande = selectedCommande;
+        // Now you have access to the selected Commande in this controller
+    }
+//    @FXML
+//    private void handleOpenModifierEtatUI() {
+//        try {
+//            Commande selectedCommande = commandeTable.getSelectionModel().getSelectedItem();
+//            if (selectedCommande == null) {
+//                showAlert("Aucune commande sélectionnée", "Veuillez sélectionner une commande avant de continuer.");
+//                return;
+//            }
+//            
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("../ui/ModifierEtatUI.fxml"));
+//            Parent modifierEtatUI = loader.load();
+//            
+//            ModifierEtatController modifierEtatController = loader.getController();
+//            modifierEtatController.setSelectedCommande(selectedCommande); // Set the selected Commande
+//
+//            Stage stage = new Stage();
+//            stage.setTitle("Modifier l'état de paiement");
+//            stage.setScene(new Scene(modifierEtatUI));
+//            stage.show();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            // Handle the error
+//        }
+//    }
+
+
+
+
+    public void setDeveloppeurUIController(DeveloppeurUIController developpeurUIController) {
+        this.developpeurUIController = developpeurUIController;
+    }
+
     
     @FXML
     private void handleEnregistrerCommande() throws UMSDBException {
         String nomClient = clientField.getText();
+        
+        String etat =NiveauComboBox.getSelectionModel().getSelectedItem();
         
         LocalDate selectedDate = datePField.getValue();
         String dateCommande = selectedDate.toString();
@@ -260,7 +316,7 @@ public class SaisieCommandeController implements Initializable {
        // int quantiteChoisieTotale = quantitesChoisies.stream().mapToInt(Integer::intValue).sum();
        // Commande commande = new Commande(nomClient, dateCommande, quantiteChoisieTotale, produitsChoisis, montantTotal);
        
-        String etat = null;
+       
         Commande commande = new Commande(nomClient, dateCommande, produitsChoisis, quantitesChoisies, montantTotal,etat);
         commandeDAO.create(commande);
         

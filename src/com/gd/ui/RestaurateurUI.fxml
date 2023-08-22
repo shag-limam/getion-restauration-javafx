@@ -132,7 +132,16 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
-                              </Button>                           
+                              </Button>
+                             <Button mnemonicParsing="false" onAction="#handleModifierEtat" style="-fx-background-color: #CCDBFD;" text="Modifier Etat">
+                                 <graphic>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@resources/bug.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>                          
                               </children>
                         </HBox>
                         <TableView fx:id="commandeTable" style="-fx-selection-bar: #CCDBFD; -fx-selection-bar: salmon; fx-border-color: #ABC4FF; -fx-border-width: 1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="51.0">
@@ -142,9 +151,9 @@
                            <columns>
                               <TableColumn fx:id="nomClientColumn" prefWidth="132.0" text="Client" />
                               <TableColumn fx:id="ProduitColu" prefWidth="132.0" text="Produit" />
-                              <TableColumn fx:id="quantitesProduitsColumn" prefWidth="132.0" text="quntite liste" />
+                              <TableColumn fx:id="quantitesProduitsColumn" prefWidth="132.0" text="quntite(s)" />
                               <TableColumn fx:id="dateCommandeColumn" prefWidth="132.0" text="date" />
-                              <TableColumn fx:id="montantTotalColumn" prefWidth="109.0" text="prix" />
+                              <TableColumn fx:id="montantTotalColumn" prefWidth="109.0" text="Montant Total" />
                               <TableColumn fx:id="etatPaiementColumn" prefWidth="109.0" text="Etat paiement" />
                               
                                  </columns>

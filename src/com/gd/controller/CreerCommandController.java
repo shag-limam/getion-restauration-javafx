@@ -138,8 +138,6 @@ public class CreerCommandController {
 	        commande.setProduitc(produitCommandeComboBox.getSelectionModel().getSelectedItem());
 	        //commande.setDateCommande(Date.getEditor().getText().toString());
 	        commande.setDateCommande(Date.getEditor().getText().toString());
-	        
-
 
 			validerClicked = true;
 			dialogStage.close();
