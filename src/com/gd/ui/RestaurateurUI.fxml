@@ -40,16 +40,28 @@
                      
                      
                   </HBox>
-                  <Button fx:id="btnproduit" layoutY="76.0" mnemonicParsing="false" onAction="#openDeveloppeur2UI" prefHeight="40.0" prefWidth="248.0" text="LIste de produit" textAlignment="CENTER" />
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+                  <Button fx:id="btnproduit" layoutY="83.0" mnemonicParsing="false" onAction="#afficherCommandesPayees" prefHeight="40.0" prefWidth="248.0" text="LIste de Paiements" textAlignment="CENTER" />
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@resources/gamme-de-produits.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btncommande" layoutY="36.0" mnemonicParsing="false" onAction="#openCommandeUI" prefHeight="40.0" prefWidth="248.0" text="Liste de commandes" />
+                  <Button fx:id="btncommande" layoutY="40.0" mnemonicParsing="false" onAction="#openCommandeUI" prefHeight="40.0" prefWidth="248.0" text="Liste de commandes" />
                   <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@resources/liste-de-courses.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnproduit1" layoutY="126.0" mnemonicParsing="false" onAction="#showProductRevenueView" prefHeight="40.0" prefWidth="248.0" text="LIste de Paiements" textAlignment="CENTER" />
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/gamme-de-produits.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnproduit11" layoutY="171.0" mnemonicParsing="false" onAction="#openProduitUI" prefHeight="40.0" prefWidth="248.0" text="LIste des produits" textAlignment="CENTER" />
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/gamme-de-produits.png" />
                      </image>
                   </ImageView>
                </children></AnchorPane>
@@ -133,7 +145,16 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                             <Button mnemonicParsing="false" onAction="#handleModifierEtat" style="-fx-background-color: #CCDBFD;" text="Modifier Etat">
+                             <Button mnemonicParsing="false" onAction="#handleModifierEtat" style="-fx-background-color: #37b6cd;" text="Modifier Etat">
+                                 <graphic>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@resources/bug.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#imprimerCommandeSelectionnee" style="-fx-background-color: #37b6cd;" text="Imprimer">
                                  <graphic>
                                     <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

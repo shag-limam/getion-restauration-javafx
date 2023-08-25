@@ -51,6 +51,14 @@
 			<artifactId>jbcrypt</artifactId>
 			<version>0.4</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.pdfbox</groupId>
+		    <artifactId>pdfbox</artifactId>
+		    <version>2.0.27</version> <!-- Vérifiez la dernière version sur le site d'Apache PDFBox -->
+		</dependency>
+
+
 
 
 		

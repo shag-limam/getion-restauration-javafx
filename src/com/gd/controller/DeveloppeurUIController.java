@@ -1,10 +1,16 @@
 package com.gd.controller;
 
 import java.awt.Image;
+import java.awt.Label;
 import java.io.IOException;
 import java.sql.Date;
-import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import com.gd.db.UMSDBException;
 import com.gd.db.dao.CommandeDaoImpl;
@@ -16,11 +22,10 @@ import com.gd.model.Commande;
 import com.gd.model.Developpeur;
 import com.gd.model.Produit;
 import com.gd.run.GDApplication;
+import com.gd.service.RevenueTrackingService;
 
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,16 +39,29 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
+
 import javafx.stage.Stage;
 
+//import org.springframework.beans.factory.annotation.Autowired;
+
+
+
 public class DeveloppeurUIController {
+
+	
+	//@Autowired
+    private RevenueTrackingService revenueTrackingService;
+	@FXML
+	private Label dailyTotalLabel;
+
+	private Produit selectedProduct;
+	
 	@FXML
 	private TableView<Commande> commandeTable;
 	@FXML
@@ -96,7 +114,8 @@ public class DeveloppeurUIController {
 	private MenuButton MenuButtonField;
 	
 	@FXML
-	private Button btnproduit;
+	private Button btnproduit;@FXML
+	private Button btnproduit1;
 	@FXML
 	private Button btncommande;
 	@FXML
@@ -129,6 +148,7 @@ public class DeveloppeurUIController {
 	
 	@FXML
 	private void initialize() {
+
 		 
 		ProduitColu.setCellValueFactory(cellData -> {
 		        List<Produit> produits = cellData.getValue().getProduits(); // Utilisez la méthode getProduits() pour obtenir la liste de produits pour une commande
@@ -180,6 +200,11 @@ public class DeveloppeurUIController {
     	commandeDAO=new CommandeDaoImpl();
     }
 
+	// Cette méthode est appelée lorsque vous sélectionnez un produit dans le TableView
+    @FXML
+    private void onProduitSelected() {
+        selectedProduct = ProduitTable.getSelectionModel().getSelectedItem();
+    }
 	
 	@FXML
 	private void handleModifierEtat() {
@@ -212,22 +237,80 @@ public class DeveloppeurUIController {
 		}
 	}
 	
+	@FXML
+	private void afficherCommandesPayees() {
+	    ObservableList<Commande> payedCommandes = FXCollections.observableArrayList();
+
+	    for (Commande commande : commandeTable.getItems()) {
+	        if (commande.isPayee().equals("Non payée")) {
+	            payedCommandes.add(commande);
+	        }
+	    }
+
+	    commandeTable.setItems(payedCommandes);
+	}
 	
-//	@FXML
-//	private void initialize() {
-//	    // Initialise la table des commandes
-//	    idCommandeColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-//	    produitCommandeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduit().getIntitule()));
-//	    quantiteColumn.setCellValueFactory(new PropertyValueFactory<>("quantite"));
-//	    dateCommandeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateCommande().toString()));
-//	    montantTotalColumn.setCellValueFactory(new PropertyValueFactory<>("montantTotal"));
-//	    etatPaiementColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isPayee() ? "Payée" : "Non payée"));
-//	    
-//	    // Assurez-vous que la source de données renvoie une liste observée d'objets Commande
-//	    ObservableList<Commande> commandes = GDApplication.getInstance().getDataSource().getCommandes();
-//	    
-//	    commandeTable.setItems(commandes);
-//	}
+	@FXML
+    private void openProduitUI(ActionEvent event) {
+		Chef chef = new Chef();
+		GDApplication.getInstance().initDevLayout(chef);
+      Stage currentStage = (Stage) btnproduit1.getScene().getWindow();
+      currentStage.close();
+      closeWindow();
+	}
+
+	private void closeWindow() {
+        Stage stage = (Stage) commandeTable.getScene().getWindow();
+        stage.close();
+    }
+
+	@FXML
+	private void imprimerCommandeSelectionnee() {
+	    Commande selectedCommande = commandeTable.getSelectionModel().getSelectedItem();
+
+	    if (selectedCommande != null) {
+	        try {
+	            PDDocument document = new PDDocument();
+	            PDPage page = new PDPage();
+	            document.addPage(page);
+	            PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+	            contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
+	            contentStream.beginText();
+	            contentStream.newLineAtOffset(50, 700);
+	            contentStream.showText("Informations de la commande sélectionnée:");
+	            contentStream.newLine();
+	            contentStream.showText("Date de commande: " + selectedCommande.getDateCommande());
+	            contentStream.newLine();
+	            contentStream.showText("Montant total: " + selectedCommande.getMontantTotal());
+	            // Ajoutez d'autres informations de la commande ici...
+	            contentStream.endText();
+
+	            contentStream.close();
+
+	            // Sauvegarde du document PDF
+	            String fileName = "commande_" + selectedCommande.getId() + ".pdf";
+	            document.save(fileName);
+	            document.close();
+
+	            System.out.println("PDF généré et enregistré sous : " + fileName);
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	            // Gérez les erreurs liées à la génération de PDF ici
+	        }
+	    } else {
+	        // Aucune commande sélectionnée, affichez un message d'alerte
+	        Alert alert = new Alert(Alert.AlertType.WARNING);
+	        alert.setTitle("Aucune sélection");
+	        alert.setHeaderText("Aucune commande n'a été sélectionnée !");
+	        alert.setContentText("Veuillez choisir une commande à imprimer en PDF.");
+	        alert.showAndWait();
+	    }
+	}
+
+
+	
+
 
 	
 	
@@ -251,33 +334,7 @@ public class DeveloppeurUIController {
 			}
 		}
 	}
-//	
-//	@FXML
-//    private void handleOpenModifierEtatUI() {
-//        try {
-//            Commande selectedCommande = commandeTable.getSelectionModel().getSelectedItem();
-//            if (selectedCommande == null) {
-//                showAlert("Aucune commande sélectionnée", "Veuillez sélectionner une commande avant de continuer.");
-//                return;
-//            }
-//            
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("../ui/ModifierEtatUI.fxml"));
-//            Parent modifierEtatUI = loader.load();
-//            
-//            ModifierEtatController modifierEtatController = loader.getController();
-//            modifierEtatController.setSelectedCommande(selectedCommande); // Set the selected Commande
-//
-//            Stage stage = new Stage();
-//            stage.setTitle("Modifier l'état de paiement");
-//            stage.setScene(new Scene(modifierEtatUI));
-//            stage.show();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            // Handle the error
-//        }
-//    }
 
-	
 
 	
 	/**
@@ -348,7 +405,7 @@ public class DeveloppeurUIController {
 				GDApplication.getInstance().getDataSource().getCommandes(), b -> true);
 
 		rechercherField.textProperty().addListener((observable, oldValue, newValue) -> {
-			filteredData.setPredicate(incident -> {
+			filteredData.setPredicate(commande -> {
 
 				if (newValue == null || newValue.isEmpty()) {
 					return true;
@@ -356,8 +413,16 @@ public class DeveloppeurUIController {
 
 				String lowerCaseFilter = newValue.toLowerCase();
 
-				if (incident.getProduit().getIntitule().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+				if (commande.getNomClient().toLowerCase().indexOf(lowerCaseFilter) != -1) {
 					return true;
+				}if (commande.isPayee().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true;
+				}
+				if (String.valueOf(commande.getQuantitesProduits()).toLowerCase().indexOf(lowerCaseFilter) != -1) {
+				    return true;
+				}
+				if (String.valueOf(commande.getProduits()).toLowerCase().indexOf(lowerCaseFilter) != -1) {
+				    return true;
 				}
 				if (Long.valueOf(user.getId()).toString().toLowerCase().indexOf(lowerCaseFilter) != -1) {
 					return true;
@@ -396,23 +461,7 @@ public class DeveloppeurUIController {
 		GDApplication.getInstance().initRapporteurLayout1(repp);
       Stage currentStage = (Stage) btnproduit.getScene().getWindow();
       currentStage.close();
-//        try {
-//        	
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(getClass().getResource("../ui/DeveloppeurProduitUI.fxml"));
-//            BorderPane page = (BorderPane) loader.load();
-//            // Créer une nouvelle scène et afficher la nouvelle interface utilisateur
-//            Scene scene = new Scene(page);
-//            Stage stage = new Stage();
-//            stage.setScene(scene);
-//            stage.show();
-//
-//            // Vous pouvez également fermer la scène actuelle si nécessaire
-//            Stage currentStage = (Stage) btnproduit.getScene().getWindow();
-//            currentStage.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
     }
     
     public int idCommande() {
@@ -424,5 +473,40 @@ public class DeveloppeurUIController {
 		return id_commande;
 	}
 	
+    
+   
+   
+    
+    // Cette méthode affiche la vue de suivi des recettes
+    @FXML
+    private void showProductRevenueView() {
+        try {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("../ui/ProductRevenue.fxml"));
+//            TabPane tabPane = loader.load();
+            
+            FXMLLoader loader = new FXMLLoader();
+	    	//loader.setLocation(GDApplication.class.getResource("../ui/DeveloppeurUI.fxml"));
+            loader.setLocation(getClass().getResource("/com/gd/ui/DeveloppeurUI.fxml"));
 
+	        Parent commandeUI = loader.load();
+
+            // Create an instance of the controller
+            ProductRevenueController productRevenueController = loader.getController();
+
+            // Pass the selectedProduct and revenueTrackingService to the init method
+            productRevenueController.init(selectedProduct, revenueTrackingService);
+
+            Scene scene = new Scene(commandeUI);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Suivi des recettes pour le produit");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the exception appropriately
+        }
+    }
+
+
+ 
 }

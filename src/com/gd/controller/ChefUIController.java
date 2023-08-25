@@ -68,10 +68,13 @@ public class ChefUIController {
 	
 	@FXML
 	private Button btncommande;
-	
 	@FXML
 	private Button btnproduit;
 	
+	@FXML
+	private Button btnproduit2;
+	@FXML
+	private Button btnproduit11;
 	
 	private Chef user;
 	@SuppressWarnings("unused")
@@ -89,7 +92,6 @@ public class ChefUIController {
 	@FXML
 	private void initialize() {
 		// Initialise la table des Produit
-		
 		//DateColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<Date>(cellData.getValue().getDate()));
 		quantiteColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantite()).asObject());
 		DescriptionColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescription()));
@@ -152,6 +154,13 @@ public class ChefUIController {
 		}
 	}
 	
+	@FXML
+    private void openProduitUI1(ActionEvent event) {
+		Chef chef = new Chef();
+		GDApplication.getInstance().initDevLayout(chef);
+      Stage currentStage = (Stage) btnproduit11.getScene().getWindow();
+      currentStage.close();
+	}
 	@SuppressWarnings("static-access")
 	@FXML
 	private void handleModifierIncident() {
@@ -265,16 +274,20 @@ public class ChefUIController {
     private void openCommandeUI(ActionEvent event) {
 		Developpeur repp = new Developpeur();
 		GDApplication.getInstance().initDevelopeurLayout(repp);
-      Stage currentStage = (Stage) btnproduit.getScene().getWindow();
-      currentStage.close();
+      Stage currentStage = (Stage) btncommande.getScene().getWindow();
+      closeWindow();
 	}
-	
+	private void closeWindow() {
+        Stage stage = (Stage) btncommande.getScene().getWindow();
+        stage.close();
+    }
     @FXML
     private void openProduitUI(ActionEvent event) {
     	Chef repp = new Chef();
 		GDApplication.getInstance().initRapporteurLayout1(repp);
       Stage currentStage = (Stage) btnproduit.getScene().getWindow();
       currentStage.close();
+      closeWindow();
     }
 	
 	@FXML
