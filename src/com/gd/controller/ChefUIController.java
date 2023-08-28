@@ -16,7 +16,6 @@ import com.gd.run.GDApplication;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -79,7 +78,10 @@ public class ChefUIController {
 	private Chef user;
 	@SuppressWarnings("unused")
 	private Stage dialogStage;
-	
+    //@FXML
+    //private TableColumn<Produit, String> mise_ajourColumn;
+	@FXML
+	private TableColumn<Produit, Produit> imageColumn;
 	
 	
 	
@@ -100,6 +102,12 @@ public class ChefUIController {
 		AppColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIntitule()));
         PrixColumn.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getPrix()).asObject());
        // ImageColumn.setCellValueFactory(cellData -> cellData.getValue().imageProperty());
+        
+        // Configurer la colonne image avec la cellule personnalisée ImageViewTableCellFactory
+        
+
+
+
 
 		ProduitTable.setItems(GDApplication.getInstance().getDataSource().getproduits());
 

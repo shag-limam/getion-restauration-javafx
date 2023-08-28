@@ -1,5 +1,10 @@
 package com.gd.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+
 import com.gd.model.Produit;
 
 import javafx.fxml.FXML;
@@ -9,13 +14,20 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 
 public class CreerProduitController {
 
 
 	private Produit produit;
+
+	@FXML
+	private ImageView productImageView;
 
 	private Stage dialogStage;
 	private boolean validerClicked;
@@ -31,6 +43,8 @@ public class CreerProduitController {
 	private TextField quantiteColumn;
 	@FXML
 	private DatePicker Date;
+	
+
 
 	@FXML
 	private void initialize() {
@@ -52,25 +66,70 @@ public class CreerProduitController {
 		this.dialogStage = dialogStage;
 	}
 
-	// Called when the user clicks Valider.
+	// Called when the user clicks Valid er.
 	@FXML
 	private void handleValider() {
-		if (isInputValid()) {
-			produit.setIntitule(AppField.getText());
-			// Convert the String value to float before setting the prix
+	    if (isInputValid()) {
+	        produit.setIntitule(AppField.getText());
+	        
+	        // Convert the String value to float before setting the prix
 	        float prixValue = Float.parseFloat(PrixField.getText());
 	        int quantiteValue = Integer.parseInt(quantiteColumn.getText());
 	        produit.setPrix(prixValue);
 	        produit.setQuantite(quantiteValue);
-			produit.setDescription(DesField.getText());
-			//produit.setEtat(NiveauComboBox.getSelectionModel().getSelectedItem());
-			produit.setOpendate(Date.getEditor().getText().toString());
-
-			validerClicked = true;
-			dialogStage.close();
-		}
+	        
+	        produit.setDescription(DesField.getText());
+	        // produit.setEtat(NiveauComboBox.getSelectionModel().getSelectedItem());
+	        produit.setOpendate(Date.getEditor().getText().toString());
+	        
+	        // Récupérer l'image sélectionnée par l'utilisateur
+	        
+	        
+	        validerClicked = true;
+	        dialogStage.close();
+	    }
 	}
 
+//	@FXML
+//	private void handleValider() {
+//		if (isInputValid()) {
+//			produit.setIntitule(AppField.getText());
+//			// Convert the String value to float before setting the prix
+//	        float prixValue = Float.parseFloat(PrixField.getText());
+//	        int quantiteValue = Integer.parseInt(quantiteColumn.getText());
+//	        produit.setPrix(prixValue);
+//	        produit.setQuantite(quantiteValue);
+//			produit.setDescription(DesField.getText());
+//			//produit.setEtat(NiveauComboBox.getSelectionModel().getSelectedItem());
+//			produit.setOpendate(Date.getEditor().getText().toString());
+//
+//			validerClicked = true;
+//			dialogStage.close();
+//		}
+//	}
+
+	@FXML
+	private void handleChoisirImage() {
+	    FileChooser fileChooser = new FileChooser();
+	    fileChooser.setTitle("Choisir une image de produit");
+	    fileChooser.getExtensionFilters().addAll(
+	        new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg")
+	    );
+
+	    File selectedImageFile = fileChooser.showOpenDialog(dialogStage);
+
+	    if (selectedImageFile != null) {
+	        try {
+	            byte[] imageBytes = Files.readAllBytes(selectedImageFile.toPath());
+	            Image image = new Image(new ByteArrayInputStream(imageBytes));
+	            productImageView.setImage(image);
+	        } catch (IOException e) {
+	            // Gérer les erreurs liées à la lecture de l'image
+	        }
+	    }
+	}
+
+	
 	// Validates the user input in the text fields.
 	private boolean isInputValid() {
 		String errorMessage = "";

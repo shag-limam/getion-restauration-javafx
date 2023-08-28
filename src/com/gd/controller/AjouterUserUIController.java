@@ -42,7 +42,7 @@ public class AjouterUserUIController {
 	@FXML
 	private void initialize() {
 		roleComboBox.getItems().clear();
-		roleComboBox.getItems().addAll("ADMINISTRATEUR","DEVELOPPEUR", "RESPONSABLE","CHEF");
+		roleComboBox.getItems().addAll("ADMINISTRATEUR","RESTAURATEUR","CHEF");
 	}
 
 	public void setDialogStage(Stage dialogStage) {

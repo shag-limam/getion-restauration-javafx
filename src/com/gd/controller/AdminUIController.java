@@ -172,7 +172,7 @@ public class AdminUIController {
 					e.printStackTrace();
 				}
 
-			} else if (role.equals("DEVELOPPEUR")) {
+			} else if (role.equals("RESTAURATEUR")) {
 
 				Developpeur dev = new Developpeur();
 				dev.setNom(user.getNom());

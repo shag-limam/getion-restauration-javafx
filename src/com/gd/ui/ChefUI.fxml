@@ -25,17 +25,12 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0">
                <children>
-                  <HBox spacing="10.0" style="-fx-background-color: #37b6cd; -fx-border-color: #ABC4FF; -fx-border-style: solid inside; -fx-border-width: 1;" AnchorPane.bottomAnchor="292.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <HBox prefWidth="248.0" spacing="10.0" style="-fx-background-color: #37b6cd; -fx-border-color: #ABC4FF; -fx-border-style: solid inside; -fx-border-width: 1;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <padding>
                         <Insets bottom="10.0" left="7.0" right="7.0" top="10.0" />
                      </padding>
                      <children>
-                        <ImageView fitHeight="15.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@resources/comment.png" />
-                           </image>
-                        </ImageView>
-                        <Label text="Commentaire" textFill="#1b191a">
+                        <Label textFill="#1b191a">
                            <font>
                               <Font name="Bauhaus 93" size="12.0" />
                            </font>
@@ -161,6 +156,8 @@
                               <TableColumn fx:id="PrixColumn" prefWidth="132.0" text="Prix" />
                               <TableColumn fx:id="quantiteColumn" prefWidth="132.0" text="Quantite" />
                               <TableColumn fx:id="mise_ajourColumn" prefWidth="109.0" text="Deriére mise ajour" />
+                           
+
                            </columns>
                         </TableView>
                      </children>

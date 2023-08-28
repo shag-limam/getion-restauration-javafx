@@ -94,7 +94,7 @@
                   <Insets />
                </GridPane.margin>
             </Label>
-            <Label text="GDI" textFill="#37b6cd" GridPane.columnIndex="1">
+            <Label text="GDR" textFill="#37b6cd" GridPane.columnIndex="1">
                <font>
                   <Font name="Arial Bold Italic" size="40.0" />
                </font>
