@@ -149,7 +149,7 @@ public class UtilisateurDaoImpl implements IDao {
 		List<String> users = new ArrayList<>();
 		try {
 			Session session = HibernateConnection.getInstance().getSession();
-			Query query = session.createQuery("Select u.login From Utilisateur u Where role ='Developpeur'");
+			Query query = session.createQuery("Select u.login From Utilisateur u Where role ='Restaurateur'");
 			users = query.getResultList();
 		} catch (Exception e) {
 			throw new UMSDBException("ERROR:" + e.getClass() + ":" + e.getMessage());

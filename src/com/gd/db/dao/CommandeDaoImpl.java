@@ -12,7 +12,7 @@ import org.hibernate.SessionFactory;
 import com.gd.db.HibernateConnection;
 import com.gd.db.UMSDBException;
 import com.gd.model.Commande;
-import com.gd.model.Developpeur;
+import com.gd.model.Restaurateur;
 
 public class CommandeDaoImpl implements IDaoCommandImpl<Commande> {
 	
@@ -55,7 +55,7 @@ public class CommandeDaoImpl implements IDaoCommandImpl<Commande> {
     
 
     @Override
-    public List<Commande> readByDev(Developpeur dev) throws UMSDBException {
+    public List<Commande> readByDev(Restaurateur dev) throws UMSDBException {
         List<Commande> commandes = new ArrayList<>();
         try {
             Session session = HibernateConnection.getInstance().getSession();

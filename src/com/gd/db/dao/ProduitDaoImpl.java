@@ -13,7 +13,7 @@ import org.hibernate.Transaction;
 
 import com.gd.db.HibernateConnection;
 import com.gd.db.UMSDBException;
-import com.gd.model.Developpeur;
+import com.gd.model.Restaurateur;
 import com.gd.model.Produit;
 
 
@@ -111,7 +111,7 @@ public class ProduitDaoImpl implements IDaoImpl<Produit> {
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-	public List<Produit> readByDev(Developpeur dev) throws UMSDBException {
+	public List<Produit> readByDev(Restaurateur dev) throws UMSDBException {
 		// TODO Auto-generated method stub
 		List<Produit> produits = new ArrayList<>();
 

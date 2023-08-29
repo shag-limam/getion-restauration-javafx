@@ -3,7 +3,7 @@ package com.gd.db.dao;
 import java.util.List;
 
 import com.gd.db.UMSDBException;
-import com.gd.model.Developpeur;
+import com.gd.model.Restaurateur;
 import com.gd.model.Commande;
 
 public interface IDaoCommandImpl<T> {
@@ -22,5 +22,5 @@ public void create(T obj) throws UMSDBException;
 	
 	public List<T> list() throws UMSDBException;
 
-    List<Commande> readByDev(Developpeur dev) throws UMSDBException;
+    List<Commande> readByDev(Restaurateur dev) throws UMSDBException;
 }

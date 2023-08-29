@@ -9,19 +9,19 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Developpeur")
-public class Developpeur extends Utilisateur {
+@Table(name = "Restaurateur")
+public class Restaurateur extends Utilisateur {
 
 	
 	
 	
 
-	public Developpeur(Long id, String login, String password, String nom, String prenom, String email) {
+	public Restaurateur(Long id, String login, String password, String nom, String prenom, String email) {
 		super(id, login, password, nom, prenom, email);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Developpeur() {
+	public Restaurateur() {
 		// TODO Auto-generated constructor stub
 	}
 

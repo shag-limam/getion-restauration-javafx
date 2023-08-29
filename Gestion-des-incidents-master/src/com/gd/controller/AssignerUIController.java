@@ -3,7 +3,7 @@ package com.gd.controller;
 import java.util.List;
 
 import com.gd.db.UMSDBException;
-import com.gd.model.Developpeur;
+import com.gd.model.Restaurateur;
 import com.gd.model.Produit;
 import com.gd.model.Utilisateur;
 import com.gd.run.GDApplication;

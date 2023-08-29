@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.gd.db.UMSDBException;
 import com.gd.model.Commande;
-import com.gd.model.Developpeur;
+import com.gd.model.Restaurateur;
 import com.gd.model.Produit;
 
 
@@ -25,7 +25,7 @@ public interface IDaoImpl<T> {
 	
 	public List<T> list() throws UMSDBException;
 
-	List<Produit> readByDev(Developpeur dev) throws UMSDBException;
+	List<Produit> readByDev(Restaurateur dev) throws UMSDBException;
 
 	List<String> listProductNames() throws UMSDBException;
 	T getProduitByName(String nomProduit) throws UMSDBException;

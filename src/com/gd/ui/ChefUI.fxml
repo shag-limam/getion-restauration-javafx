@@ -59,7 +59,7 @@
                         <Font name="Book Antiqua" size="37.0" />
                      </font>
                   </Label>
-                  <Label layoutX="125.0" layoutY="12.0" text="GDI" textFill="#eaeaea">
+                  <Label layoutX="125.0" layoutY="12.0" text="GDR" textFill="#eaeaea">
                      <font>
                         <Font name="Arial Bold Italic" size="40.0" />
                      </font>

@@ -65,7 +65,7 @@ import javax.persistence.Table;
 //    private Chef chef;
 //	
 //	@ManyToOne 
-//	private Developpeur developpeur;
+//	private Restaurateur restaurateur;
 //	@OneToMany(
 //	        cascade = CascadeType.ALL,
 //	        orphanRemoval = true
@@ -114,11 +114,11 @@ import javax.persistence.Table;
 //	public void setRapporteur(Chef chef) {
 //		this.chef = chef;
 //	}
-//	public Developpeur getDeveloppeur() {
-//		return developpeur;
+//	public Restaurateur getDeveloppeur() {
+//		return restaurateur;
 //	}
-//	public void setDeveloppeur(Developpeur developpeur) {
-//		this.developpeur = developpeur;
+//	public void setDeveloppeur(Restaurateur restaurateur) {
+//		this.developpeur = restaurateur;
 //	}
 //	public String getIntitule() {
 //		return intitule;
@@ -185,7 +185,7 @@ public class Produit implements Serializable {
     private Chef chef;
 
     @ManyToOne
-    private Developpeur developpeur;
+    private Restaurateur restaurateur;
 
 //    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 //    @JoinColumn(name = "produit_id")
@@ -288,12 +288,12 @@ public class Produit implements Serializable {
 		this.chef = chef;
 	}
 
-	public Developpeur getDeveloppeur() {
-		return developpeur;
+	public Restaurateur getDeveloppeur() {
+		return restaurateur;
 	}
 
-	public void setDeveloppeur(Developpeur developpeur) {
-		this.developpeur = developpeur;
+	public void setDeveloppeur(Restaurateur restaurateur) {
+		this.restaurateur = restaurateur;
 	}
 
 	public static long getSerialversionuid() {

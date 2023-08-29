@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 import com.gd.db.UMSDBException;
 import com.gd.model.Administrateur;
-import com.gd.model.Developpeur;
+import com.gd.model.Restaurateur;
 import com.gd.model.Chef;
 import com.gd.model.Utilisateur;
 import com.gd.run.GDApplication;
@@ -174,7 +174,7 @@ public class AdminUIController {
 
 			} else if (role.equals("RESTAURATEUR")) {
 
-				Developpeur dev = new Developpeur();
+				Restaurateur dev = new Restaurateur();
 				dev.setNom(user.getNom());
 				dev.setPrenom(user.getPrenom());
 				dev.setEmail(user.getEmail());

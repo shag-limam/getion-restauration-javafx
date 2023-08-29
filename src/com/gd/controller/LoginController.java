@@ -3,7 +3,7 @@ package com.gd.controller;
 
 import java.sql.SQLException;
 
-import com.gd.model.Developpeur;
+import com.gd.model.Restaurateur;
 import com.gd.model.Chef;
 import com.gd.model.Utilisateur;
 import com.gd.run.GDApplication;
@@ -75,9 +75,9 @@ public class LoginController {
 
 					break;
 					
-				case "Developpeur":
-					Developpeur dev = new Developpeur();
-					dev = (Developpeur) user;
+				case "Restaurateur":
+					Restaurateur dev = new Restaurateur();
+					dev = (Restaurateur) user;
 					GDApplication.getInstance().initDevelopeurLayout(dev);
 					
 					break;

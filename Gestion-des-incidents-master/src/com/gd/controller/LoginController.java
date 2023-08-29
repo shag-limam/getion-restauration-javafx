@@ -3,7 +3,7 @@ package com.gd.controller;
 
 import java.sql.SQLException;
 
-import com.gd.model.Developpeur;
+import com.gd.model.Restaurateur;
 import com.gd.model.Chef;
 import com.gd.model.Responsable;
 import com.gd.model.Utilisateur;

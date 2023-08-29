@@ -3,7 +3,7 @@ package com.gd.db.dao;
 import java.util.List;
 
 import com.gd.db.UMSDBException;
-import com.gd.model.Developpeur;
+import com.gd.model.Restaurateur;
 import com.gd.model.Produit;
 
 

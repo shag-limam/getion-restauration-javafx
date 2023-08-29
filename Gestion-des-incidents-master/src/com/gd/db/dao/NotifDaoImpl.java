@@ -8,7 +8,7 @@ import org.hibernate.Transaction;
 
 import com.gd.db.HibernateConnection;
 import com.gd.db.UMSDBException;
-import com.gd.model.Developpeur;
+import com.gd.model.Restaurateur;
 import com.gd.model.Produit;
 import com.gd.model.Notif;
 

@@ -2,7 +2,7 @@ package com.gd.run;
 
 import java.io.IOException;
 import com.gd.db.UMSDBException;
-import com.gd.model.Developpeur;
+import com.gd.model.Restaurateur;
 import com.gd.model.Produit;
 import com.gd.model.Chef;
 import com.gd.model.Responsable;
@@ -16,7 +16,7 @@ import com.gd.controller.AjouterUserUIController;
 import com.gd.controller.AssignerUIController;
 import com.gd.controller.CommentaireUIController;
 import com.gd.controller.CreerProduitController;
-import com.gd.controller.DeveloppeurUIController;
+import com.gd.controller.RestaurateurUIController;
 import com.gd.controller.ModifierEtatController;
 import com.gd.controller.ChefUIController;
 import com.gd.controller.ResponsableUIController;

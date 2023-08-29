@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gd.controller.DeveloppeurUIController">
+<BorderPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gd.controller.RestaurateurUIController">
    <left>
       <SplitPane orientation="VERTICAL" prefWidth="250.0" BorderPane.alignment="CENTER">
         <items>
@@ -40,26 +40,20 @@
                      
                      
                   </HBox>
-                  <Button fx:id="btnproduit" layoutY="83.0" mnemonicParsing="false" onAction="#afficherCommandesPayees" prefHeight="40.0" prefWidth="248.0" text="LIste de Paiements" textAlignment="CENTER" />
+                  <Button layoutY="83.0" mnemonicParsing="false" onAction="#afficherCommandesPayees" prefHeight="40.0" prefWidth="248.0" text="LIste de Paiements" textAlignment="CENTER" />
                   <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@resources/gamme-de-produits.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btncommande" layoutY="40.0" mnemonicParsing="false" onAction="#openCommandeUI" prefHeight="40.0" prefWidth="248.0" text="Liste de commandes" />
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+                  <Button fx:id="btnproduit" layoutY="40.0" mnemonicParsing="false" onAction="#openCommandeUI" prefHeight="40.0" prefWidth="248.0" text="Liste de commandes" />
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@resources/liste-de-courses.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnproduit1" layoutY="126.0" mnemonicParsing="false" onAction="#showProductRevenueView" prefHeight="40.0" prefWidth="248.0" text="LIste de Paiements" textAlignment="CENTER" />
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@resources/gamme-de-produits.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="btnproduit11" layoutY="171.0" mnemonicParsing="false" onAction="#openProduitUI" prefHeight="40.0" prefWidth="248.0" text="LIste des produits" textAlignment="CENTER" />
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+                  <Button layoutY="128.0" mnemonicParsing="false" onAction="#openProduitUI" prefHeight="40.0" prefWidth="248.0" text="LIste des produits" textAlignment="CENTER" />
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@resources/gamme-de-produits.png" />
                      </image>

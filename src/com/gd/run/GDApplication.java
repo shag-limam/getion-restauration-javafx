@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 import com.gd.db.UMSDBException;
-import com.gd.model.Developpeur;
+import com.gd.model.Restaurateur;
 import com.gd.model.Produit;
 import com.gd.model.Chef;
 import com.gd.model.Commande;
@@ -17,7 +17,7 @@ import com.gd.util.Utilitaire;
 import com.gd.controller.AdminUIController;
 import com.gd.controller.AjouterUserUIController;
 import com.gd.controller.CreerProduitController;
-import com.gd.controller.DeveloppeurUIController;
+import com.gd.controller.RestaurateurUIController;
 import com.gd.controller.ModifierEtatController;
 import com.gd.controller.SaisieCommandeController;
 import com.gd.controller.ChefUIController;
@@ -126,7 +126,7 @@ public class GDApplication extends Application {
 	}
 	
 	// Interface Res 
-    public void initDevelopeurLayout(Developpeur user) {
+    public void initDevelopeurLayout(Restaurateur user) {
 			// TODO Auto-generated method stub
 			try {
 				
@@ -140,7 +140,7 @@ public class GDApplication extends Application {
 				primaryStage.hide();
 
 				DevStage.setScene(scene);
-				DeveloppeurUIController controller = loader.getController();
+				RestaurateurUIController controller = loader.getController();
 				controller.setDialogStage(DevStage);
 				controller.setUser(user);
 				DevStage.show();

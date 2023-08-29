@@ -83,7 +83,7 @@ public class SaisieCommandeController implements Initializable {
     private IDaoCommandImpl commandeDAO;
     private IDaoImpl<Produit> produitDAO;
 
-    private DeveloppeurUIController developpeurUIController;
+    private RestaurateurUIController restaurateurUIController;
 
 	
     public SaisieCommandeController() {
@@ -282,8 +282,8 @@ public class SaisieCommandeController implements Initializable {
 
 
 
-    public void setDeveloppeurUIController(DeveloppeurUIController developpeurUIController) {
-        this.developpeurUIController = developpeurUIController;
+    public void setDeveloppeurUIController(RestaurateurUIController restaurateurUIController) {
+        this.restaurateurUIController = restaurateurUIController;
     }
 
     

@@ -11,7 +11,7 @@ import com.gd.db.dao.IDaoImpl;
 import com.gd.db.dao.ProduitDaoImpl;
 import com.gd.db.dao.UtilisateurDaoImpl;
 import com.gd.model.Commande;
-import com.gd.model.Developpeur;
+import com.gd.model.Restaurateur;
 import com.gd.model.Produit;
 import com.gd.model.Utilisateur;
 import com.gd.db.dao.CommandeDaoImpl; // Replace with the actual package name
@@ -193,7 +193,7 @@ public class DataSource {
 	}
 
 	
-	public List<Commande> readCommandesByDev(Developpeur dev) throws UMSDBException {
+	public List<Commande> readCommandesByDev(Restaurateur dev) throws UMSDBException {
 	    List<Commande> commandes = daoCommandImpl.readByDev(dev);
 	    return commandes;
 	}

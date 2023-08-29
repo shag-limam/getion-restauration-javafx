@@ -41,7 +41,7 @@ public class Commande {
     
 	
     @ManyToOne
-    private Developpeur developpeur;
+    private Restaurateur restaurateur;
 
 //    @OneToMany(mappedBy = "commande")
 //    private List<Produit> produits = new ArrayList<>(); 
@@ -140,12 +140,12 @@ public class Commande {
 		this.id = id;
 	}
 
-	public Developpeur getDeveloppeur() {
-		return developpeur;
+	public Restaurateur getDeveloppeur() {
+		return restaurateur;
 	}
 
-	public void setDeveloppeur(Developpeur developpeur) {
-		this.developpeur = developpeur;
+	public void setDeveloppeur(Restaurateur restaurateur) {
+		this.restaurateur = restaurateur;
 	}
 
 

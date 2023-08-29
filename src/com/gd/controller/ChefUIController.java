@@ -11,7 +11,7 @@ import com.gd.db.UMSDBException;
 
 import com.gd.model.Produit;
 import com.gd.model.Chef;
-import com.gd.model.Developpeur;
+import com.gd.model.Restaurateur;
 import com.gd.run.GDApplication;
 
 import javafx.beans.property.SimpleDoubleProperty;
@@ -162,13 +162,7 @@ public class ChefUIController {
 		}
 	}
 	
-	@FXML
-    private void openProduitUI1(ActionEvent event) {
-		Chef chef = new Chef();
-		GDApplication.getInstance().initDevLayout(chef);
-      Stage currentStage = (Stage) btnproduit11.getScene().getWindow();
-      currentStage.close();
-	}
+
 	@SuppressWarnings("static-access")
 	@FXML
 	private void handleModifierIncident() {
@@ -280,7 +274,7 @@ public class ChefUIController {
 	
 	@FXML
     private void openCommandeUI(ActionEvent event) {
-		Developpeur repp = new Developpeur();
+		Restaurateur repp = new Restaurateur();
 		GDApplication.getInstance().initDevelopeurLayout(repp);
       Stage currentStage = (Stage) btncommande.getScene().getWindow();
       closeWindow();

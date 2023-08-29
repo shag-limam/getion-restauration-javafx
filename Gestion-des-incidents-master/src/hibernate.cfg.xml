@@ -13,7 +13,7 @@
 		<property name="show_sql">true</property>
 		<mapping class="com.gd.model.Utilisateur" />
 		<mapping class="com.gd.model.Administrateur" />
-		<mapping class="com.gd.model.Developpeur" />
+		<mapping class="com.gd.model.Restaurateur" />
 		<mapping class="com.gd.model.Chef" />
 		<mapping class="com.gd.model.Responsable" />
 		<mapping class="com.gd.model.Produit" />

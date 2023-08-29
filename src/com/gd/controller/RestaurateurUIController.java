@@ -19,7 +19,7 @@ import com.gd.db.dao.IDaoImpl;
 import com.gd.db.dao.ProduitDaoImpl;
 import com.gd.model.Chef;
 import com.gd.model.Commande;
-import com.gd.model.Developpeur;
+import com.gd.model.Restaurateur;
 import com.gd.model.Produit;
 import com.gd.run.GDApplication;
 import com.gd.service.RevenueTrackingService;
@@ -52,7 +52,7 @@ import javafx.stage.Stage;
 
 
 
-public class DeveloppeurUIController {
+public class RestaurateurUIController {
 
 	
 	//@Autowired
@@ -114,8 +114,11 @@ public class DeveloppeurUIController {
 	private MenuButton MenuButtonField;
 	
 	@FXML
-	private Button btnproduit;@FXML
-	private Button btnproduit1;
+	private Button btnpro;
+	
+	@FXML
+	private Button btnproduit;
+	
 	@FXML
 	private Button btncommande;
 	@FXML
@@ -125,18 +128,18 @@ public class DeveloppeurUIController {
 	private TextField rechercherField;
 
 
-	private Developpeur user;
+	private Restaurateur user;
 	@SuppressWarnings("unused")
 	private Stage dialogStage;
 	
 	//private ObservableList<Produit> incidentsDev = FXCollections.observableArrayList();
 
 
-	public Developpeur getUser() {
+	public Restaurateur getUser() {
 		return user;
 	}
 
-	public void setUser(Developpeur user) {
+	public void setUser(Restaurateur user) {
 		this.user = user;
 		MenuButtonField.setText(user.getLogin());
 	}
@@ -195,7 +198,7 @@ public class DeveloppeurUIController {
 	    rechercher();
 	}
 
-	public DeveloppeurUIController() {
+	public RestaurateurUIController() {
     	produitDAO=new ProduitDaoImpl();
     	commandeDAO=new CommandeDaoImpl();
     }
@@ -218,7 +221,7 @@ public class DeveloppeurUIController {
 
 				try {
 					GDApplication.getInstance().getDataSource().UpdateCommande(selectedIncident, selectedIndex);
-					GDApplication.getInstance().getUtilitaire().displayNotification(" Incident update avec succès !");
+					GDApplication.getInstance().getUtilitaire().displayNotification(" commande update avec succès !");
 				} catch (UMSDBException e) {
 					// TODO Auto-generated catch block
 					GDApplication.getInstance().getUtilitaire().displayErrorMessage("Error : " + e.getMessage());
@@ -242,7 +245,7 @@ public class DeveloppeurUIController {
 	    ObservableList<Commande> payedCommandes = FXCollections.observableArrayList();
 
 	    for (Commande commande : commandeTable.getItems()) {
-	        if (commande.isPayee().equals("Non payée")) {
+	        if (commande.isPayee().equals("Payée")) {
 	            payedCommandes.add(commande);
 	        }
 	    }
@@ -252,11 +255,13 @@ public class DeveloppeurUIController {
 	
 	@FXML
     private void openProduitUI(ActionEvent event) {
-		Chef chef = new Chef();
-		GDApplication.getInstance().initDevLayout(chef);
-      Stage currentStage = (Stage) btnproduit1.getScene().getWindow();
-      currentStage.close();
+		//Restaurateur restaurateur = new Restaurateur();
+		Chef repp = new Chef();
+		GDApplication.getInstance().initDevLayout(repp);
+      Stage currentStage =(Stage) btnpro.getScene().getWindow();
       closeWindow();
+      currentStage.close();
+      
 	}
 
 	private void closeWindow() {
@@ -449,10 +454,11 @@ public class DeveloppeurUIController {
 
 	@FXML
     private void openCommandeUI(ActionEvent event) {
-		Developpeur repp = new Developpeur();
+		Restaurateur repp = new Restaurateur();
 		GDApplication.getInstance().initDevelopeurLayout(repp);
       Stage currentStage = (Stage) btnproduit.getScene().getWindow();
       currentStage.close();
+      closeWindow();
 	}
 	
     @FXML

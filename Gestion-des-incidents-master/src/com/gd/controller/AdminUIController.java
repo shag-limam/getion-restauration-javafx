@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 import com.gd.db.UMSDBException;
 import com.gd.model.Administrateur;
-import com.gd.model.Developpeur;
+import com.gd.model.Restaurateur;
 import com.gd.model.Chef;
 import com.gd.model.Responsable;
 import com.gd.model.Utilisateur;
